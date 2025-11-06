@@ -288,6 +288,10 @@ significancia estadística de los resutlados.
 ##     intersect, setdiff, setequal, union
 \end{verbatim}
 
+\begin{verbatim}
+## Warning: package 'treemapify' was built under R version 4.5.2
+\end{verbatim}
+
 \section{Exploración inicial}\label{exploraciuxf3n-inicial}
 
 \subsection{Importación y verificación
@@ -933,21 +937,35 @@ y cómo varía la media de brecha entre periodos.
 \NormalTok{rango\_y }\OtherTok{\textless{}{-}} \FunctionTok{range}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{brecha\_paro)}
 \NormalTok{años}\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(df\_clean}\SpecialCharTok{$}\NormalTok{Periodo)}
 
+\CommentTok{\# Definir los años que quieres graficar}
+\NormalTok{años }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2024}\NormalTok{, }\DecValTok{2020}\NormalTok{, }\DecValTok{2010}\NormalTok{, }\DecValTok{2007}\NormalTok{, }\DecValTok{2006}\NormalTok{)}
 
-\NormalTok{grafico\_brecha\_paro\_por\_año}\OtherTok{\textless{}{-}}\FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año)\{}
-\NormalTok{  brecha\_edades }\SpecialCharTok{\%\textgreater{}\%} 
-    \FunctionTok{filter}\NormalTok{(Periodo}\SpecialCharTok{==}\NormalTok{año) }\SpecialCharTok{\%\textgreater{}\%} 
-    \FunctionTok{ggplot}\NormalTok{( }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ brecha\_paro)) }\SpecialCharTok{+}
-  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
- \FunctionTok{ylim}\NormalTok{(rango\_y) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Brecha de paro por grupo de edad {-}"}\NormalTok{, año),}\AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Brecha "}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{,}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{) )}\SpecialCharTok{+}
-    \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{brecha\_paro[brecha\_edades}\SpecialCharTok{$}\NormalTok{Periodo }\SpecialCharTok{==}\NormalTok{ año]),}
-               \AttributeTok{color =} \StringTok{"grey10"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }
+\CommentTok{\# Calcular rango del eje Y (opcional, si ya lo tienes definido)}
+\NormalTok{rango\_y }\OtherTok{\textless{}{-}} \FunctionTok{range}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{brecha\_paro, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Generar gráficos solo para esos años}
+\NormalTok{graficos\_brecha\_paro }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año) \{}
+\NormalTok{  brecha\_edades }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(Periodo }\SpecialCharTok{==}\NormalTok{ año) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ brecha\_paro)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{ylim}\NormalTok{(rango\_y) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Brecha de paro por grupo de edad {-}"}\NormalTok{, año),}
+      \AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Brecha (\%)"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{geom\_hline}\NormalTok{(}
+      \AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{brecha\_paro[brecha\_edades}\SpecialCharTok{$}\NormalTok{Periodo }\SpecialCharTok{==}\NormalTok{ año], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+      \AttributeTok{color =} \StringTok{"grey10"}\NormalTok{,}
+      \AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{,}
+      \AttributeTok{linewidth =} \DecValTok{1}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
 \NormalTok{\})}
 
-\NormalTok{grafico\_brecha\_paro\_por\_año}
+\NormalTok{graficos\_brecha\_paro}
 \end{Highlighting}
 \end{Shaded}
 
@@ -984,104 +1002,6 @@ y cómo varía la media de brecha entre periodos.
 \end{verbatim}
 
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf}}
-
-\begin{verbatim}
-## 
-## [[6]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-6.pdf}}
-
-\begin{verbatim}
-## 
-## [[7]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-7.pdf}}
-
-\begin{verbatim}
-## 
-## [[8]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-8.pdf}}
-
-\begin{verbatim}
-## 
-## [[9]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-9.pdf}}
-
-\begin{verbatim}
-## 
-## [[10]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-10.pdf}}
-
-\begin{verbatim}
-## 
-## [[11]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-11.pdf}}
-
-\begin{verbatim}
-## 
-## [[12]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-12.pdf}}
-
-\begin{verbatim}
-## 
-## [[13]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-13.pdf}}
-
-\begin{verbatim}
-## 
-## [[14]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-14.pdf}}
-
-\begin{verbatim}
-## 
-## [[15]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-15.pdf}}
-
-\begin{verbatim}
-## 
-## [[16]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-16.pdf}}
-
-\begin{verbatim}
-## 
-## [[17]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-17.pdf}}
-
-\begin{verbatim}
-## 
-## [[18]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-18.pdf}}
-
-\begin{verbatim}
-## 
-## [[19]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-19.pdf}}
 Los gráficos resultantes muestran, de forma clara y comparativa, cómo la
 intensidad de la brecha de género en el desempleo varía según la edad y
 el momento temporal. En los primeros años analizados, la brecha es
@@ -1352,7 +1272,7 @@ laboral a lo largo del tiempo y entre sexos.
   \FunctionTok{select}\NormalTok{(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(Inactivos,Ocupados,Parados),}\AttributeTok{names\_to =} \StringTok{"Estado"}\NormalTok{,}\AttributeTok{values\_to =} \StringTok{"N\_Personas"}\NormalTok{)}
 
-\NormalTok{años}\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(datos\_composicion}\SpecialCharTok{$}\NormalTok{Periodo)}
+\NormalTok{años }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2024}\NormalTok{, }\DecValTok{2020}\NormalTok{, }\DecValTok{2010}\NormalTok{, }\DecValTok{2007}\NormalTok{, }\DecValTok{2006}\NormalTok{)}
 
 \NormalTok{graficos\_composicion\_por\_año }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año) \{}
 \NormalTok{  datos\_composicion }\SpecialCharTok{\%\textgreater{}\%}
@@ -1407,104 +1327,6 @@ laboral a lo largo del tiempo y entre sexos.
 \end{verbatim}
 
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf}}
-
-\begin{verbatim}
-## 
-## [[6]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-6.pdf}}
-
-\begin{verbatim}
-## 
-## [[7]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-7.pdf}}
-
-\begin{verbatim}
-## 
-## [[8]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-8.pdf}}
-
-\begin{verbatim}
-## 
-## [[9]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-9.pdf}}
-
-\begin{verbatim}
-## 
-## [[10]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-10.pdf}}
-
-\begin{verbatim}
-## 
-## [[11]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-11.pdf}}
-
-\begin{verbatim}
-## 
-## [[12]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-12.pdf}}
-
-\begin{verbatim}
-## 
-## [[13]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-13.pdf}}
-
-\begin{verbatim}
-## 
-## [[14]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-14.pdf}}
-
-\begin{verbatim}
-## 
-## [[15]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-15.pdf}}
-
-\begin{verbatim}
-## 
-## [[16]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-16.pdf}}
-
-\begin{verbatim}
-## 
-## [[17]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-17.pdf}}
-
-\begin{verbatim}
-## 
-## [[18]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-18.pdf}}
-
-\begin{verbatim}
-## 
-## [[19]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-19.pdf}}
 
 Del análisis de los gráficos se observa una estructura bastante estable
 del mercado laboral por edad y sexo a lo largo del tiempo, con ligeras
@@ -1598,104 +1420,6 @@ evolución temporal.
 \end{verbatim}
 
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf}}
-
-\begin{verbatim}
-## 
-## [[6]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-6.pdf}}
-
-\begin{verbatim}
-## 
-## [[7]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-7.pdf}}
-
-\begin{verbatim}
-## 
-## [[8]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-8.pdf}}
-
-\begin{verbatim}
-## 
-## [[9]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-9.pdf}}
-
-\begin{verbatim}
-## 
-## [[10]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-10.pdf}}
-
-\begin{verbatim}
-## 
-## [[11]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-11.pdf}}
-
-\begin{verbatim}
-## 
-## [[12]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-12.pdf}}
-
-\begin{verbatim}
-## 
-## [[13]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-13.pdf}}
-
-\begin{verbatim}
-## 
-## [[14]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-14.pdf}}
-
-\begin{verbatim}
-## 
-## [[15]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-15.pdf}}
-
-\begin{verbatim}
-## 
-## [[16]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-16.pdf}}
-
-\begin{verbatim}
-## 
-## [[17]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-17.pdf}}
-
-\begin{verbatim}
-## 
-## [[18]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-18.pdf}}
-
-\begin{verbatim}
-## 
-## [[19]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-19.pdf}}
 En estas gráficas se aprecia cómo la distribución del paro dentro de
 cada sexo ha cambiado en los últimos años, influida por transformaciones
 estructurales del mercado laboral y demográficas. La elevación

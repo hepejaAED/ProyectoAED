@@ -430,21 +430,36 @@ library(dplyr)
 rango_y <- range(brecha_edades$brecha_paro)
 años<- unique(df_clean$Periodo)
 
+# Definir los años que quieres graficar
+años <- c(2024, 2020, 2010, 2007, 2006)
 
-grafico_brecha_paro_por_año<-lapply(años, function(año){
-  brecha_edades %>% 
-    filter(Periodo==año) %>% 
-    ggplot( aes(x = factor(Edad, levels = unique(Edad)), y = brecha_paro)) +
-  geom_col(fill = "steelblue") +
- ylim(rango_y) +
-  labs(title = paste("Brecha de paro por grupo de edad -", año),x = "Grupo de edad",y = "Brecha ") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45,hjust = 1) )+
-    geom_hline(yintercept = mean(brecha_edades$brecha_paro[brecha_edades$Periodo == año]),
-               color = "grey10", linetype = "dashed", linewidth = 1) 
+# Calcular rango del eje Y (opcional, si ya lo tienes definido)
+rango_y <- range(brecha_edades$brecha_paro, na.rm = TRUE)
+
+# Generar gráficos solo para esos años
+graficos_brecha_paro <- lapply(años, function(año) {
+  brecha_edades %>%
+    filter(Periodo == año) %>%
+    ggplot(aes(x = factor(Edad, levels = unique(Edad)), y = brecha_paro)) +
+    geom_col(fill = "steelblue") +
+    ylim(rango_y) +
+    labs(
+      title = paste("Brecha de paro por grupo de edad -", año),
+      x = "Grupo de edad",
+      y = "Brecha (%)"
+    ) +
+    geom_hline(
+      yintercept = mean(brecha_edades$brecha_paro[brecha_edades$Periodo == año], na.rm = TRUE),
+      color = "grey10",
+      linetype = "dashed",
+      linewidth = 1
+    ) +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 })
 
-grafico_brecha_paro_por_año
+graficos_brecha_paro
+
 
 ```
 Los gráficos resultantes muestran, de forma clara y comparativa, cómo la intensidad de la brecha de género en el desempleo varía según la edad y el momento temporal. En los primeros años analizados, la brecha es especialmente elevada entre los jóvenes, lo que evidencia una mayor vulnerabilidad del empleo femenino en los primeros tramos de edad. En cambio, en los años más recientes para esos tramos de edad, las diferencias tienden a moderarse y presentan un patrón más equilibrado entre grupos, aunque persisten desigualdades estructurales en los segmentos intermedios y de mayor edad.
@@ -691,7 +706,7 @@ datos_composicion<- df_clean  %>%
   select(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) %>% 
   pivot_longer(cols = c(Inactivos,Ocupados,Parados),names_to = "Estado",values_to = "N_Personas")
 
-años<- unique(datos_composicion$Periodo)
+años <- c(2024, 2020, 2010, 2007, 2006)
 
 graficos_composicion_por_año <- lapply(años, function(año) {
   datos_composicion %>%
