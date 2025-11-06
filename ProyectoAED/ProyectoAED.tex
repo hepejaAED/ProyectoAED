@@ -238,38 +238,20 @@ inicial}\label{importaciuxf3n-y-verificaciuxf3n-inicial}
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Codificación e importación}: Se verifica la codificación y se
-  importa el archivo CSV delimitado por tabulaciones, se indica que el
-  separador decimal es la coma y que los valores \emph{NA} están
-  codificados como \texttt{".."}
+  \textbf{Codificación e importación}: La codificación del los datos
+  brutos es \texttt{UFT-8} con una confianza del \(100\%\). Archivo
+  delimitado por tabulaciones, se indica que el separador decimal es la
+  coma y que los valores \emph{NA} están codificados como \texttt{".."}
 \end{itemize}
 
-\begin{verbatim}
-## # A tibble: 3 x 2
-##   encoding   confidence
-##   <chr>           <dbl>
-## 1 UTF-8            1   
-## 2 ISO-8859-1       0.98
-## 3 ISO-8859-2       0.28
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 6 x 5
-##   Sexo        Edad  `Relación con la actividad económica` Periodo  Total
-##   <chr>       <chr> <chr>                                   <dbl>  <dbl>
-## 1 Ambos sexos Total Total                                    2024 41566.
-## 2 Ambos sexos Total Total                                    2023 40983.
-## 3 Ambos sexos Total Total                                    2022 40367.
-## 4 Ambos sexos Total Total                                    2021 39926.
-## 5 Ambos sexos Total Total                                    2020 39579.
-## 6 Ambos sexos Total Total                                    2019 39269.
-\end{verbatim}
+Las variables del dataframe original son Sexo, Edad, Relación con la
+actividad económica, Periodo y Total.
 
 \subsection{Valores faltantes}\label{valores-faltantes}
 
-Todos los valores ausentes se encuentran en \texttt{Total}
+Los valores ausentes se encuentran concentrados \texttt{Total}
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-6-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-4-1.pdf}}
 
 Se observa que los valores faltantes vienen asociados a grupos de edad
 altos y cuya relación con la actividad económica es ``Parados que buscan
@@ -350,7 +332,7 @@ faltantes.
 \subsection{Distribución de la tasa de actividad por
 sexo}\label{distribuciuxf3n-de-la-tasa-de-actividad-por-sexo}
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf}}
 
 \subsection{Evolucion de la tasa de paro por género y evolución de la
 brecha de la tasa de paro por
@@ -366,7 +348,7 @@ paro por sexo y la brecha media correspondiente.
 
 Agrupación de datos por periodo y por sexo
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-11-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf}}
 
 La gráfica enseña la evolución de la tasa de actividad en España entre
 los años 2006 y 2024, diferenciada por sexo. Por un lado, la proporción
@@ -386,11 +368,11 @@ mercado laboral español
 
 Tasa de actividad por edad y sexo
 
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-11-1.pdf}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-12-1.pdf}}
+
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-13-1.pdf}}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-14-1.pdf}}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-15-1.pdf}}
 El primer gráfico (\texttt{evo\_brecha\_total}) representa la evolución
 de la brecha de paro total tanto con lineas como con puntos para mostrar
 la tendencia y los valores anuales. En él se observa cómo la diferencia
@@ -445,7 +427,7 @@ brecha para ese año. De esta forma, el código permite observar en
 paralelo la estructura intergeneracional de las desigualdades laborales
 y cómo varía la media de brecha entre periodos.
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-17-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-15-1.pdf}}
 Los gráficos resultantes muestran, de forma clara y comparativa, cómo la
 intensidad de la brecha de género en el desempleo varía según la edad y
 el momento temporal. En los primeros años analizados, la brecha es
@@ -463,7 +445,7 @@ generacionales y se identifican con claridad los grupos que más
 contribuyen a mantener las disparidades laborales entre hombres y
 mujeres a lo largo del tiempo.
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-17-1.pdf}}
 
 \section{Distribución de la población en el mercado
 laboral}\label{distribuciuxf3n-de-la-poblaciuxf3n-en-el-mercado-laboral}
@@ -517,14 +499,14 @@ laboral a lo largo del tiempo y entre sexos.
 ## [[1]]
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-18-1.pdf}}
 
 \begin{verbatim}
 ## 
 ## [[2]]
 \end{verbatim}
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-20-2.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-18-2.pdf}}
 
 Del análisis de los gráficos se observa una estructura bastante estable
 del mercado laboral por edad y sexo a lo largo del tiempo, con ligeras
@@ -572,7 +554,7 @@ género que aún caracterizan el mercado laboral español.
 
 \#Distribución de ocupados e inactivos por sexo
 
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf}}
 
 \section{act inact}\label{act-inact}
 

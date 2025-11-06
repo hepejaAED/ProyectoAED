@@ -65,10 +65,10 @@ pacman::p_load(
 
 ## Importación y verificación inicial
 
-- **Codificación e importación**: La codificación del los datos brutos es `UFT-8` con una confianza del $100\%$. Archivo delimitado por tabulaciones, se indica que el separador decimal es la coma y que los valores *NA* están codificados como `".."`
+- **Codificación e importación**: La codificación del los datos brutos es `UFT-8` con una confianza del $100\%$. Archivo delimitado por tabulaciones, se indica que el separador decimal es la coma y que los valores *NA* están codificados como `".."`.
 
 ```{r,echo = FALSE}
-df<-read_delim(archivo, delim = "\t", escape_double = FALSE, na = "..", 
+df<-read_delim("data/65948.csv", delim = "\t", escape_double = FALSE, na = "..", 
                trim_ws = TRUE,locale = locale(decimal_mark = ","))
 ```
 
@@ -76,7 +76,7 @@ Las variables del dataframe original son Sexo, Edad, Relación con la actividad 
 
 ## Valores faltantes
 
-Todos los valores ausentes se encuentran en `Total`
+Los valores ausentes se encuentran concentrados `Total`
 
 ```{r,echo = FALSE}
 df %>% rename(Situacion_Laboral = "Relación con la actividad económica") %>% filter(is.na(Total)) %>% ggplot(aes(x=Situacion_Laboral))+geom_bar(aes(fill=Edad))+labs(
