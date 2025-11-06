@@ -27,6 +27,16 @@ output:
 
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,        # Oculta el código
+  message = FALSE,     # Oculta mensajes de carga (por ejemplo, de librerías)
+  warning = FALSE,     # Oculta advertencias
+  fig.align = "center" # Centra las figuras (opcional)
+)
+```
+
+
 
 ```{r,echo = FALSE}
 rm(list=ls())
@@ -38,19 +48,19 @@ Este artículo presenta un enfoque en R para el Análisis Exploratorio de Datos 
 ## Carga de Librerías
 
 ```{r,echo = FALSE}
-# Manejo de datos
-library(readr)
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(forcats)
-
-# Visualización
-library(ggplot2)
-library(visdat)
-library(treemapify)
-library(gganimate)
-library(gifski)
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  readr,
+  dplyr,
+  tidyr,
+  stringr,
+  forcats,
+  ggplot2,
+  visdat,
+  treemapify,
+  gganimate,
+  gifski
+)
 ```
 
 # Exploración inicial

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.10)  6 NOV 2025 17:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.7.10)  6 NOV 2025 18:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1045,44 +1045,27 @@ Package: seqsplit 2006/08/07 v0.1 Splitting long sequences (DNA, RNA, proteins,
 \cellWidthX=\skip188
 \cellWidthY=\skip189
 \cellWidthZ=\skip190
-) (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
-Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count390
-\FV@InFile=\read3
-\FV@TabBox=\box78
-\c@FancyVerbLine=\count391
-\FV@StepNumber=\count392
-\FV@OutFile=\write4
-) (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/framed\framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip191
-\fb@frw=\dimen341
-\fb@frh=\dimen342
-\FrameRule=\dimen343
-\FrameSep=\dimen344
-)
-\pandoc@box=\box79
-(C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+) (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
-\LTleft=\skip192
-\LTright=\skip193
-\LTpre=\skip194
-\LTpost=\skip195
-\LTchunksize=\count393
-\LTcapwidth=\dimen345
-\LT@head=\box80
-\LT@firsthead=\box81
-\LT@foot=\box82
-\LT@lastfoot=\box83
-\LT@gbox=\box84
-\LT@cols=\count394
-\LT@rows=\count395
-\c@LT@tables=\count396
-\c@LT@chunks=\count397
+\LTleft=\skip191
+\LTright=\skip192
+\LTpre=\skip193
+\LTpost=\skip194
+\LTchunksize=\count390
+\LTcapwidth=\dimen341
+\LT@head=\box78
+\LT@firsthead=\box79
+\LT@foot=\box80
+\LT@lastfoot=\box81
+\LT@gbox=\box82
+\LT@cols=\count391
+\LT@rows=\count392
+\c@LT@tables=\count393
+\c@LT@chunks=\count394
 \LT@p@ftn=\toks63
 )
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 253.
+h' as default language. on input line 198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-06-21 v7.01n Hypertext links for LaTeX
 
@@ -1098,16 +1081,16 @@ Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
 lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count398
+\c@section@level=\count395
 )
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen346
-\Hy@linkcounter=\count399
-\Hy@pagecounter=\count400
+\@linkdim=\dimen342
+\Hy@linkcounter=\count396
+\Hy@pagecounter=\count397
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-06-21 v7.01n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -1115,7 +1098,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count401
+\Hy@SavedSpaceFactor=\count398
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-06-21 v7.01n Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -1133,9 +1116,9 @@ Package hyperref Info: Plain pages OFF on input line 4196.
 Package hyperref Info: Backreferencing OFF on input line 4201.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4448.
-\c@Hy@tempcnt=\count402
+\c@Hy@tempcnt=\count399
 LaTeX Info: Redefining \url on input line 4787.
-\XeTeXLinkMargin=\dimen347
+\XeTeXLinkMargin=\dimen343
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
@@ -1144,9 +1127,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count403
-\Field@Width=\dimen348
-\Fld@charsize=\dimen349
+\Fld@menulength=\count400
+\Field@Width=\dimen344
+\Fld@charsize=\dimen345
 Package hyperref Info: Hyper figures OFF on input line 6066.
 Package hyperref Info: Link nesting OFF on input line 6071.
 Package hyperref Info: Hyper index ON on input line 6074.
@@ -1154,15 +1137,15 @@ Package hyperref Info: backreferencing OFF on input line 6081.
 Package hyperref Info: Link coloring ON on input line 6084.
 Package hyperref Info: Link coloring with OCG OFF on input line 6091.
 Package hyperref Info: PDF/A mode OFF on input line 6096.
-\Hy@abspage=\count404
-\c@Item=\count405
-\c@Hfootnote=\count406
+\Hy@abspage=\count401
+\c@Item=\count402
+\c@Hfootnote=\count403
 )
 Package hyperref Info: Driver: hpdftex.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-06-21 v7.01n Hyperref driver for pdfTeX
-\Fld@listcount=\count407
-\c@bookmark@seq@number=\count408
+\Fld@listcount=\count404
+\c@bookmark@seq@number=\count405
 
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -1175,7 +1158,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip196
+\Hy@SectionHShift=\skip195
 ) (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/cleveref\cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
@@ -1197,54 +1180,54 @@ Package cleveref Info: always capitalise cross-reference names on input line 78
 Package cleveref Info: no abbreviation of names on input line 7852.
 )
 ==> First Aid for cleveref.sty applied!
-LaTeX Font Info:    Trying to load font information for T1+ppl on input line 25
-3.
+LaTeX Font Info:    Trying to load font information for T1+ppl on input line 19
+8.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 ) (ProyectoAED.aux)
 \openout1 = `ProyectoAED.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 253.
-LaTeX Font Info:    ... okay on input line 253.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 198.
+LaTeX Font Info:    ... okay on input line 198.
 
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count409
-\scratchdimen=\dimen350
-\scratchbox=\box85
-\nofMPsegments=\count410
-\nofMParguments=\count411
+\scratchcounter=\count406
+\scratchdimen=\dimen346
+\scratchbox=\box83
+\nofMPsegments=\count407
+\nofMParguments=\count408
 \everyMPshowfont=\toks64
-\MPscratchCnt=\count412
-\MPscratchDim=\dimen351
-\MPnumerator=\count413
-\makeMPintoPDFobject=\count414
+\MPscratchCnt=\count409
+\MPscratchDim=\dimen347
+\MPnumerator=\count410
+\makeMPintoPDFobject=\count411
 \everyMPtoPDFconversion=\toks65
 )
-LaTeX Info: Redefining \microtypecontext on input line 253.
-Package microtype Info: Applying patch `item' on input line 253.
-Package microtype Info: Applying patch `toc' on input line 253.
-Package microtype Info: Applying patch `eqnum' on input line 253.
-Package microtype Info: Applying patch `footnote' on input line 253.
-Package microtype Info: Applying patch `verbatim' on input line 253.
-LaTeX Info: Redefining \microtypesetup on input line 253.
+LaTeX Info: Redefining \microtypecontext on input line 198.
+Package microtype Info: Applying patch `item' on input line 198.
+Package microtype Info: Applying patch `toc' on input line 198.
+Package microtype Info: Applying patch `eqnum' on input line 198.
+Package microtype Info: Applying patch `footnote' on input line 198.
+Package microtype Info: Applying patch `verbatim' on input line 198.
+LaTeX Info: Redefining \microtypesetup on input line 198.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1255,7 +1238,7 @@ Package microtype Info: Using default expansion set `alltext-nott'.
 LaTeX Warning: Command \showhyphens   has changed.
                Check if current package is valid.
 
-LaTeX Info: Redefining \showhyphens on input line 253.
+LaTeX Info: Redefining \showhyphens on input line 198.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1268,7 +1251,7 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 253.
+or `english'. on input line 198.
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
 * driver: pdftex
@@ -1310,80 +1293,80 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 253.
+Package hyperref Info: Link coloring ON on input line 198.
 (ProyectoAED.out) (ProyectoAED.out)
-\@outlinefile=\write5
-\openout5 = `ProyectoAED.out'.
+\@outlinefile=\write4
+\openout4 = `ProyectoAED.out'.
 
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 2
-53.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
+98.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-Underfull \hbox (badness 3590) in paragraph at lines 253--253
+Underfull \hbox (badness 3590) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) Submitted to \T1/ppl/m/it/7 (+20) Jour-nal Not Spec-i-fied
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) un-der the terms and con-di-tions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) of the Cre-ative Com-mons Attri-
  []
 
 
-Underfull \hbox (badness 8019) in paragraph at lines 253--253
+Underfull \hbox (badness 8019) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) bu-tion (CC BY) li-cense ([][]https://[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 [][]\T1/ppl/m/n/7 (+20) creativecommons.org/licenses/by/[][]
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 2
-53.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 1
+98.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
 LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-253.
+198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-253.
+198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-253.
+198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 253.
+(Font)              scaled to size 10.42007pt on input line 198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 253.
+(Font)              scaled to size 7.91925pt on input line 198.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 253.
+(Font)              scaled to size 6.25204pt on input line 198.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 253.
+(Font)              scaled to size 10.42007pt on input line 198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 253.
+(Font)              scaled to size 7.91925pt on input line 198.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 253.
+(Font)              scaled to size 6.25204pt on input line 198.
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-253.
+198.
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -1394,41 +1377,41 @@ Package microtype Info: Loading generic protrusion settings for font family
 (C:\Users\jherr\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-eur.cfg
 File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
 )
-LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 253.
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 198.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
-(Font)                  U/msb/m/n --> U/msb/m/n on input line 253.
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 198.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
-(Font)                  U/msb/m/n --> U/msb/m/n on input line 253.
-Package marginnote Info: Margin note 1.1 is on absolute page 1 on input line 25
-3.
-Package marginnote Info: right page because not two side mode on input line 253
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 198.
+Package marginnote Info: Margin note 1.1 is on absolute page 1 on input line 19
+8.
+Package marginnote Info: right page because not two side mode on input line 198
 .
 
-Underfull \hbox (badness 3590) in paragraph at lines 253--253
+Underfull \hbox (badness 3590) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) Submitted to \T1/ppl/m/it/7 (+20) Jour-nal Not Spec-i-fied
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) un-der the terms and con-di-tions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) of the Cre-ative Com-mons Attri-
  []
 
 
-Underfull \hbox (badness 8019) in paragraph at lines 253--253
+Underfull \hbox (badness 8019) in paragraph at lines 198--198
 \T1/ppl/m/n/7 (+20) bu-tion (CC BY) li-cense ([][]https://[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--253
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
 [][]\T1/ppl/m/n/7 (+20) creativecommons.org/licenses/by/[][]
  []
 
-Package marginnote Info: xpos seems to be 167.01753pt on input line 253.
+Package marginnote Info: xpos seems to be 167.01753pt on input line 198.
 Package epstopdf Info: Source file: <Definitions/logo-mdpi.eps>
 (epstopdf)                    date: 2025-11-06 17:11:44
 (epstopdf)                    size: 563678 bytes
@@ -1438,22 +1421,22 @@ Package epstopdf Info: Source file: <Definitions/logo-mdpi.eps>
 (epstopdf)                    size: 13253 bytes
 (epstopdf)             Command: <miktex-epstopdf --outfile=Definitions/logo-mdp
 i-eps-converted-to.pdf Definitions/logo-mdpi.eps>
-(epstopdf)             \includegraphics on input line 253.
+(epstopdf)             \includegraphics on input line 198.
 Package epstopdf Info: Output file is already uptodate.
 <Definitions/logo-mdpi-eps-converted-to.pdf, id=89, 74.2775pt x 49.18375pt>
 File: Definitions/logo-mdpi-eps-converted-to.pdf Graphic file (type pdf)
 <use Definitions/logo-mdpi-eps-converted-to.pdf>
 Package pdftex.def Info: Definitions/logo-mdpi-eps-converted-to.pdf  used on in
-put line 253.
+put line 198.
 (pdftex.def)             Requested size: 42.96877pt x 28.45274pt.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 253.
+(Font)              scaled to size 8.33606pt on input line 198.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 253.
+(Font)              scaled to size 5.21004pt on input line 198.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 253.
+(Font)              scaled to size 8.33606pt on input line 198.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 253.
+(Font)              scaled to size 5.21004pt on input line 198.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1463,9 +1446,27 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (41.28839pt too wide) in paragraph at lines 324--324
-[]\T1/cmtt/m/n/10 ## -- Column specification ----------------------------------
-----------------------[] 
+Overfull \hbox (209.24738pt too wide) in paragraph at lines 272--272
+[]\T1/cmtt/m/n/10 ##  $ Sexo                               : chr [1:4446] "Ambo
+s sexos" "Ambos sexos" "Ambos sexos" "Ambos sexos" ...[] 
+ []
+
+
+Overfull \hbox (83.27814pt too wide) in paragraph at lines 272--272
+[]\T1/cmtt/m/n/10 ##  $ Edad                               : chr [1:4446] "Tota
+l" "Total" "Total" "Total" ...[] 
+ []
+
+
+Overfull \hbox (83.27814pt too wide) in paragraph at lines 272--272
+[]\T1/cmtt/m/n/10 ##  $ Relación con la actividad económica: chr [1:4446] "Tota
+l" "Total" "Total" "Total" ...[] 
+ []
+
+
+Overfull \hbox (46.53711pt too wide) in paragraph at lines 272--272
+[]\T1/cmtt/m/n/10 ##  $ Periodo                            : num [1:4446] 2024 
+2023 2022 2021 2020 ...[] 
  []
 
 
@@ -1483,37 +1484,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 r/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Users/jherr/App
 Data/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./Definit
 ions/logo-mdpi-eps-converted-to.pdf>]
-Overfull \hbox (46.53711pt too wide) in paragraph at lines 324--324
-[]\T1/cmtt/m/n/10 ## i Specify the column types or set `show_col_types = FALSE`
- to quiet this message.[] 
- []
-
-
-Overfull \hbox (209.24738pt too wide) in paragraph at lines 356--356
-[]\T1/cmtt/m/n/10 ##  $ Sexo                               : chr [1:4446] "Ambo
-s sexos" "Ambos sexos" "Ambos sexos" "Ambos sexos" ...[] 
- []
-
-
-Overfull \hbox (83.27814pt too wide) in paragraph at lines 356--356
-[]\T1/cmtt/m/n/10 ##  $ Edad                               : chr [1:4446] "Tota
-l" "Total" "Total" "Total" ...[] 
- []
-
-
-Overfull \hbox (83.27814pt too wide) in paragraph at lines 356--356
-[]\T1/cmtt/m/n/10 ##  $ Relación con la actividad económica: chr [1:4446] "Tota
-l" "Total" "Total" "Total" ...[] 
- []
-
-
-Overfull \hbox (46.53711pt too wide) in paragraph at lines 356--356
-[]\T1/cmtt/m/n/10 ##  $ Periodo                            : num [1:4446] 2024 
-2023 2022 2021 2020 ...[] 
- []
-
-
-Overfull \hbox (72.7807pt too wide) in paragraph at lines 356--356
+Overfull \hbox (72.7807pt too wide) in paragraph at lines 272--272
 []\T1/cmtt/m/n/10 ##  $ Total                              : num [1:4446] 41566
  40983 40367 39926 39579 ...[] 
  []
@@ -1524,34 +1495,24 @@ File: ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type p
 df)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf  
-used on input line 363.
+used on input line 279.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 363--364
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 279--279
+ [] 
  []
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[2]
-<ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf, id=110, 469.755pt x 325.
+<ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf, id=106, 469.755pt x 325.
 215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type p
 df)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf  
-used on input line 376.
+used on input line 292.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 376--377
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 292--292
+ [] 
  []
 
 
@@ -1563,39 +1524,84 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[3 <./ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf> <./ProyectoAED_file
-s/figure-latex/unnamed-chunk-9-1.pdf>]
-Overfull \hbox (11.26726pt too wide) in paragraph at lines 414--418
+[2 <./ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf>]
+Overfull \hbox (11.26726pt too wide) in paragraph at lines 330--334
 []\T1/ppl/b/n/10 (-20) Renombrar colum-nas\T1/ppl/m/n/10 (-20) : Uti-lizando \T
 1/cmtt/m/n/10 rename() \T1/ppl/m/n/10 (-20) para acor-tar \T1/cmtt/m/n/10 "Rela
 ción con la actividad
  []
 
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 424.
 
-Overfull \hbox (10.47003pt too wide) in paragraph at lines 429--433
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 16.18796pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.18796pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
+
+[3 <./ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf>]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 340.
+
+Overfull \hbox (10.47003pt too wide) in paragraph at lines 345--349
 []\T1/ppl/b/n/10 (-20) Renombrar vari-ables\T1/ppl/m/n/10 (-20) : Se renom-bra 
 la columna \T1/cmtt/m/n/10 "parados que buscan primer empleo"
  []
 
 
-Overfull \hbox (20.68083pt too wide) in paragraph at lines 439--444
+Overfull \hbox (20.68083pt too wide) in paragraph at lines 355--360
 []\T1/ppl/b/n/10 (-20) Creación de tasas\T1/ppl/m/n/10 (-20) : Se añaden las co
 lum-nas \T1/cmtt/m/n/10 Tasa_paro\T1/ppl/m/n/10 (-20) , \T1/cmtt/m/n/10 Tasa_ac
 tividad \T1/ppl/m/n/10 (-20) y \T1/cmtt/m/n/10 Tasa_ocupacion
  []
 
 
-Overfull \hbox (57.03455pt too wide) in paragraph at lines 466--466
+Overfull \hbox (57.03455pt too wide) in paragraph at lines 382--382
 []\T1/cmtt/m/n/10 ##  $ Sexo           : Factor w/ 2 levels "Hombres","Mujeres"
 : 1 1 1 1 1 1 1 1 1 1 ...[] 
  []
 
 
-Overfull \hbox (78.02942pt too wide) in paragraph at lines 466--466
+Overfull \hbox (78.02942pt too wide) in paragraph at lines 382--382
 []\T1/cmtt/m/n/10 ##  $ Edad           : Ord.factor w/ 12 levels "16-19"<"20-24
 "<..: 1 1 1 1 1 1 1 1 1 1 ...[] 
+ []
+
+
+Overfull \hbox (67.53198pt too wide) in paragraph at lines 382--382
+[]\T1/cmtt/m/n/10 ##  $ Parados        : num [1:456] 71.6 72.4 73.1 71.4 71.3 6
+7.5 75.2 82.5 81.1 95.1 ...[] 
+ []
+
+
+Overfull \hbox (46.53711pt too wide) in paragraph at lines 382--382
+[]\T1/cmtt/m/n/10 ##  $ Parados_sin_exp: num [1:456] 42.7 43.8 44.3 46.6 39 42.
+2 49 54.2 52.8 69.8 ...[] 
+ []
+
+
+Overfull \hbox (36.03967pt too wide) in paragraph at lines 391--391
+[]\T1/cmtt/m/n/10 ##            Sexo            Edad         Periodo           
+Total         Activos[] 
+ []
+
+
+Overfull \hbox (36.03967pt too wide) in paragraph at lines 391--391
+[]\T1/cmtt/m/n/10 ##               0               0               0           
+    0               0[] 
+ []
+
+
+Overfull \hbox (36.03967pt too wide) in paragraph at lines 391--391
+[]\T1/cmtt/m/n/10 ##        Ocupados         Parados Parados_sin_exp       Inac
+tivos       Tasa_paro[] 
+ []
+
+
+Overfull \hbox (36.03967pt too wide) in paragraph at lines 391--391
+[]\T1/cmtt/m/n/10 ##               0               0               0           
+    0               0[] 
  []
 
 
@@ -1608,102 +1614,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
 [4]
-Overfull \hbox (67.53198pt too wide) in paragraph at lines 466--466
-[]\T1/cmtt/m/n/10 ##  $ Parados        : num [1:456] 71.6 72.4 73.1 71.4 71.3 6
-7.5 75.2 82.5 81.1 95.1 ...[] 
- []
-
-
-Overfull \hbox (46.53711pt too wide) in paragraph at lines 466--466
-[]\T1/cmtt/m/n/10 ##  $ Parados_sin_exp: num [1:456] 42.7 43.8 44.3 46.6 39 42.
-2 49 54.2 52.8 69.8 ...[] 
- []
-
-
-Overfull \hbox (36.03967pt too wide) in paragraph at lines 475--475
-[]\T1/cmtt/m/n/10 ##            Sexo            Edad         Periodo           
-Total         Activos[] 
- []
-
-
-Overfull \hbox (36.03967pt too wide) in paragraph at lines 475--475
-[]\T1/cmtt/m/n/10 ##               0               0               0           
-    0               0[] 
- []
-
-
-Overfull \hbox (36.03967pt too wide) in paragraph at lines 475--475
-[]\T1/cmtt/m/n/10 ##        Ocupados         Parados Parados_sin_exp       Inac
-tivos       Tasa_paro[] 
- []
-
-
-Overfull \hbox (36.03967pt too wide) in paragraph at lines 475--475
-[]\T1/cmtt/m/n/10 ##               0               0               0           
-    0               0[] 
- []
-
-
-Overfull \hbox (41.28839pt too wide) in paragraph at lines 508--508
-[]\T1/cmtt/m/n/10 ## -- Column specification ----------------------------------
-----------------------[] 
- []
-
-
-Overfull \hbox (36.03967pt too wide) in paragraph at lines 508--508
-[]\T1/cmtt/m/n/10 ## dbl (10): Periodo, Total, Activos, Ocupados, Parados, Para
-dos_sin_exp, Inact...[] 
- []
-
-
-Overfull \hbox (46.53711pt too wide) in paragraph at lines 508--508
-[]\T1/cmtt/m/n/10 ## i Specify the column types or set `show_col_types = FALSE`
- to quiet this message.[] 
- []
-
-
-Overfull \hbox (41.28839pt too wide) in paragraph at lines 528--528
-[]\T1/cmtt/m/n/10 ## -- Attaching core tidyverse packages ---------------------
---- tidyverse 2.0.0 --[] 
- []
-
-
-Overfull \hbox (41.28839pt too wide) in paragraph at lines 528--528
-[]\T1/cmtt/m/n/10 ## -- Conflicts ------------------------------------------ ti
-dyverse_conflicts() --[] 
- []
-
-
-Overfull \hbox (151.51147pt too wide) in paragraph at lines 528--528
-[]\T1/cmtt/m/n/10 ## i Use the conflicted package (<http://conflicted.r-lib.org
-/>) to force all conflicts to become errors[] 
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[5]
-<ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf, id=137, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf, id=132, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf 
- used on input line 547.
+ used on input line 410.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 547--548
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 410--410
+ [] 
  []
 
 
-Overfull \hbox (1589.66028pt too wide) in paragraph at lines 567--567
+Overfull \hbox (1589.66028pt too wide) in paragraph at lines 416--416
 []\T1/cmtt/m/n/10 ## La gráfica enseña la evolución de la tasa de actividad en 
 España entre los años 2006 y 2024, diferenciada por sexo. Por un lado, la propo
 rción de hombres es mucho mayor a la de mujeres, cosa que va ligada a que los h
@@ -1713,7 +1638,7 @@ puede ser la construcción, y a que las mujeres se ligan mas al cuidado familiar
  []
 
 
-Overfull \hbox (2135.52698pt too wide) in paragraph at lines 567--567
+Overfull \hbox (2135.52698pt too wide) in paragraph at lines 416--416
 []\T1/cmtt/m/n/10 ##     Pese a esto, la actividad masculina en 2008 se desacel
 era economicamnete, esto provocado por la crisis financiera que se vivió en la 
 epoca. Es en 2017/18 que comienza su recuperación, pero nunca a los niveles pre
@@ -1724,25 +1649,23 @@ evios de la crisis de 2008[]
  []
 
 
-Overfull \hbox (476.932pt too wide) in paragraph at lines 567--567
+Overfull \hbox (476.932pt too wide) in paragraph at lines 416--416
 []\T1/cmtt/m/n/10 ##     por el otro lado, la tasa de actividad femenina se mue
 stra, en el periodo, ascendente ya que han ido incorporandose cada vez mas en e
 l mercado laboral español.[] 
  []
 
-LaTeX Font Info:    Font shape `T1/cmtt/bx/it' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/it' tried instead on input line 575.
-<ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf, id=138, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf, id=133, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf 
- used on input line 586.
+ used on input line 420.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 586--587
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 420--420
+ [] 
  []
 
 
@@ -1754,41 +1677,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[6 <./ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf, id=148, 469.755pt x 325
+[5 <./ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf, id=143, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf 
- used on input line 607.
+ used on input line 422.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 607--608
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 422--422
+ [] 
  []
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[7 <./ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf, id=159, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf, id=144, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf 
- used on input line 628.
+ used on input line 424.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 628--629
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 424--424
+ [] 
  []
 
 
@@ -1800,29 +1713,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[8 <./ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf>]
-Overfull \hbox (9.79608pt too wide) in paragraph at lines 646--646
-[]\T1/cmtt/m/n/10 ## Warning: Using `size` aesthetic for lines was deprecated i
-n ggplot2 3.4.0.[] 
- []
-
-
-Overfull \hbox (4.54736pt too wide) in paragraph at lines 646--646
-[]\T1/cmtt/m/n/10 ## Call `lifecycle::last_lifecycle_warnings()` to see where t
-his warning was[] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf, id=169, 469.755pt x 325
+[6 <./ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf> <./ProyectoAED_fil
+es/figure-latex/unnamed-chunk-20-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf, id=159, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf 
- used on input line 648.
+ used on input line 428.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 648--649
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 428--428
+ [] 
  []
 
 
@@ -1834,13 +1737,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[9 <./ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf> <./ProyectoAED_fil
-es/figure-latex/unnamed-chunk-22-1.pdf>]
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: TS1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-
+[7 <./ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1849,32 +1746,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[10{C:/Users/jherr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-su
-per-ts1.enc}]
-<ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf, id=189, 469.755pt x 325
+[8 <./ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf, id=179, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf 
- used on input line 728.
+ used on input line 472.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 728--729
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 472--472
+ [] 
  []
 
-<ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf, id=190, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf, id=180, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf 
- used on input line 737.
+ used on input line 474.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 737--738
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 474--474
+ [] 
  []
 
 
@@ -1886,19 +1782,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[11 <./ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-23-2.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf, id=205, 469.755pt x 325
+[9 <./ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf, id=190, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf 
- used on input line 746.
+ used on input line 476.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 746--759
-[][]
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 476--476
+ [] 
  []
 
 
@@ -1910,23 +1805,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[12 <./ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf>]
-Overfull \hbox (20.29352pt too wide) in paragraph at lines 821--821
+[10 <./ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf> <./ProyectoAED_fi
+les/figure-latex/unnamed-chunk-23-3.pdf>]
+Overfull \hbox (20.29352pt too wide) in paragraph at lines 536--536
 []\T1/cmtt/m/n/10 ##  [1] "16-19" "20-24" "25-29" "30-34" "35-39" "40-44" "45-4
 9" "50-54" "55-59"[] 
  []
 
-<ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf, id=215, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf, id=205, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf 
- used on input line 844.
+ used on input line 538.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 844--845
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 538--538
+ [] 
  []
 
 
@@ -1938,55 +1834,55 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[13]
-<ProyectoAED_files/figure-latex/unnamed-chunk-24-2.pdf, id=221, 469.755pt x 325
+[11]
+<ProyectoAED_files/figure-latex/unnamed-chunk-24-2.pdf, id=210, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-24-2.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-24-2.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-24-2.pdf 
- used on input line 857.
+ used on input line 540.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 857--858
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 540--540
+ [] 
  []
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[14 <./ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-24-2.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf, id=236, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf, id=211, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf 
- used on input line 870.
+ used on input line 542.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 870--871
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 542--542
+ [] 
  []
 
-<ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf, id=237, 469.755pt x 325
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 16.18796pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.18796pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
+
+[12 <./ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf> <./ProyectoAED_fi
+les/figure-latex/unnamed-chunk-24-2.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf, id=226, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf 
- used on input line 887.
+ used on input line 544.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 887--898
-[][]
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 544--544
+ [] 
  []
 
 
@@ -1998,27 +1894,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[15 <./ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[16 <./ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf, id=256, 469.755pt x 325
+[13 <./ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf> <./ProyectoAED_fi
+les/figure-latex/unnamed-chunk-24-4.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf, id=242, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf 
- used on input line 972.
+ used on input line 584.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 972--973
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 584--584
+ [] 
  []
 
 
@@ -2030,101 +1918,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[17]
-<ProyectoAED_files/figure-latex/unnamed-chunk-25-2.pdf, id=261, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-25-2.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-25-2.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-25-2.pdf 
- used on input line 979.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 979--980
-[][] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf, id=262, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf 
- used on input line 986.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 986--987
-[][] 
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[18 <./ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-25-2.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-25-4.pdf, id=277, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-25-4.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-25-4.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-25-4.pdf 
- used on input line 993.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 993--994
-[][] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf, id=278, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf 
- used on input line 1000.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1000--1010
-[][]
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[19 <./ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-25-4.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[20 <./ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf, id=303, 469.755pt x 325
+[14 <./ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf, id=253, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf 
- used on input line 1101.
+ used on input line 647.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1101--1102
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 647--647
+ [] 
  []
 
 
@@ -2136,18 +1941,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[21]
-<ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf, id=308, 469.755pt x 325
+[15]
+<ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf, id=258, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf 
- used on input line 1121.
+ used on input line 649.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1121--1122
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 649--649
+ [] 
  []
 
 
@@ -2159,27 +1964,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[22 <./ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[23 <./ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf, id=327, 469.755pt x 325
+[16 <./ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf> <./ProyectoAED_fi
+les/figure-latex/unnamed-chunk-30-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf, id=273, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf 
- used on input line 1190.
+ used on input line 678.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1190--1191
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 678--678
+ [] 
  []
 
 
@@ -2191,18 +1988,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[24 <./ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf, id=338, 469.755pt x 325
+[17 <./ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf, id=284, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf 
- used on input line 1245.
+ used on input line 711.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1245--1256
-[][]
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 711--711
+ [] 
  []
 
 
@@ -2214,67 +2011,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[25 <./ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf, id=349, 469.755pt x 325
+[18 <./ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf, id=294, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf 
- used on input line 1297.
+ used on input line 736.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1297--1298
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 736--736
+ [] 
  []
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[26 <./ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf, id=359, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf, id=295, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf 
- used on input line 1304.
+ used on input line 743.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1304--1305
-[][] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-34-3.pdf, id=360, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-34-3.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-34-3.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-34-3.pdf 
- used on input line 1311.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1311--1312
-[][] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf, id=361, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf 
- used on input line 1318.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1318--1319
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 743--743
+ [] 
  []
 
 
@@ -2286,48 +2047,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[27 <./ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-34-3.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf, id=376, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf 
- used on input line 1325.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1325--1326
-[][] 
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[28 <./ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-34-5.pdf>]
-Overfull \hbox (3.02768pt too wide) in paragraph at lines 1352--1361
+[19 <./ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf>]
+Overfull \hbox (3.02768pt too wide) in paragraph at lines 770--779
 []\T1/ppl/m/n/10 (-20) A con-tin-uación, se con-struyen los grá-fi-cos con gg-p
 lot2, em-ple-ando \T1/cmtt/m/n/10 geom_col(position
  []
 
-<ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf, id=391, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf, id=306, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf 
- used on input line 1390.
+ used on input line 784.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1390--1391
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 784--784
+ [] 
  []
 
 
@@ -2339,34 +2075,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[29]
-<ProyectoAED_files/figure-latex/unnamed-chunk-35-2.pdf, id=396, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-35-2.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-35-2.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-35-2.pdf 
- used on input line 1397.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1397--1398
-[][] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf, id=397, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf 
- used on input line 1404.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1404--1405
-[][] 
- []
-
-
+[20 <./ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2375,78 +2084,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[30 <./ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-35-2.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-35-4.pdf, id=412, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-35-4.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-35-4.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-35-4.pdf 
- used on input line 1411.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1411--1412
-[][] 
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf, id=413, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf 
- used on input line 1418.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1418--1434
-[][]
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[31 <./ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf> <./ProyectoAED_fi
-les/figure-latex/unnamed-chunk-35-4.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[32 <./ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf, id=438, 469.755pt x 325
+[21 <./ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf, id=325, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf 
- used on input line 1480.
+ used on input line 827.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1480--1481
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 827--827
+ [] 
  []
 
-<ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf, id=439, 469.755pt x 325
+<ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf, id=326, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf 
- used on input line 1506.
+ used on input line 831.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1506--1507
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 831--831
+ [] 
  []
 
 
@@ -2458,18 +2120,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[33 <./ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf, id=449, 469.755pt x 325
+[22 <./ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf, id=336, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf 
- used on input line 1534.
+ used on input line 835.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1534--1535
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 835--835
+ [] 
  []
 
 
@@ -2481,40 +2143,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[34 <./ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf>]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 16.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
-
-[35 <./ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf>]
-<ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf, id=468, 469.755pt x 325
+[23 <./ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf, id=346, 469.755pt x 325
 .215pt>
 File: ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type 
 pdf)
 <use ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf>
 Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf 
- used on input line 1586.
+ used on input line 856.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1586--1591
-[][]
- []
-
-<ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf, id=469, 469.755pt x 325
-.215pt>
-File: ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf Graphic file (type 
-pdf)
-<use ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf>
-Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf 
- used on input line 1607.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (21.33931pt too wide) in paragraph at lines 1607--1608
-[][] 
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 856--856
+ [] 
  []
 
 
@@ -2526,8 +2166,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[36 <./ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf>]
-Overfull \hbox (177.75507pt too wide) in paragraph at lines 1621--1621
+[24 <./ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf>]
+<ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf, id=356, 469.755pt x 325
+.215pt>
+File: ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf Graphic file (type 
+pdf)
+<use ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf>
+Package pdftex.def Info: ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf 
+ used on input line 878.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (75.39864pt too wide) in paragraph at lines 878--878
+ [] 
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 16.18796pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.18796pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
+
+[25 <./ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf>]
+Overfull \hbox (177.75507pt too wide) in paragraph at lines 892--892
 []\T1/cmtt/m/n/10 ## alternative hypothesis: true difference in means between g
 roup Hombres and group Mujeres is not equal to 0[] 
  []
@@ -2542,7 +2205,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-4.18796pt}.
 
-[37 <./ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf>] 
+[26 <./ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf>] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (ProyectoAED.aux)
  ***********
@@ -2553,25 +2216,24 @@ Package rerunfilecheck Info: File `ProyectoAED.out' has not changed.
 (rerunfilecheck)             Checksum: 7EE9EFC5787D7F385B3A8CCBD0BF90BD;3718.
  ) 
 Here is how much of TeX's memory you used:
- 34620 strings out of 468221
- 659510 string characters out of 5432891
- 1140373 words of memory out of 5000000
- 62211 multiletter control sequences out of 15000+600000
- 682290 words of font info for 294 fonts, out of 8000000 for 9000
+ 34077 strings out of 468221
+ 649356 string characters out of 5432891
+ 1139179 words of memory out of 5000000
+ 61687 multiletter control sequences out of 15000+600000
+ 681836 words of font info for 294 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  123i,12n,121p,4633b,916s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jherr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmr10.pfb><C:/Users/jherr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb><C:/Users/jherr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/cm-super/sfit1000.pfb><C:/Users/jherr/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/cm-super/sfss0800.pfb><C:/Users/jherr/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/cm-super/sftt1000.pfb><C:/Users/jherr/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jherr/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jherr/AppData/Local/
-Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on ProyectoAED.pdf (37 pages, 607085 bytes).
+blic/cm-super/sfss0800.pfb><C:/Users/jherr/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/cm-super/sftt1000.pfb><C:/Users/jherr/AppData/Local/Programs/MiKTe
+X/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jherr/AppData/Local/Programs/Mi
+KTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jherr/AppData/Local/Programs
+/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on ProyectoAED.pdf (26 pages, 492571 bytes).
 PDF statistics:
- 545 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
- 89960 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 421 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 88881 words of extra memory for PDF output out of 89155 (max. 10000000)
 
