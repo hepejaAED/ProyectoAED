@@ -190,6 +190,20 @@ subject discipline.).}
 
 
 % Add imagehandling
+% Custom command from Pandoc 3.2.1 to scale images if necessary
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
 
 
 
@@ -251,45 +265,11 @@ inicial}\label{importaciuxf3n-y-verificaciuxf3n-inicial}
 ## 6 Ambos sexos Total Total                                    2019 39269.
 \end{verbatim}
 
-Se comprueba la estructura inicial de los datos
-
-\begin{verbatim}
-## spc_tbl_ [4,446 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ Sexo                               : chr [1:4446] "Ambos sexos" "Ambos sexos" "Ambos sexos" "Ambos sexos" ...
-##  $ Edad                               : chr [1:4446] "Total" "Total" "Total" "Total" ...
-##  $ Relación con la actividad económica: chr [1:4446] "Total" "Total" "Total" "Total" ...
-##  $ Periodo                            : num [1:4446] 2024 2023 2022 2021 2020 ...
-##  $ Total                              : num [1:4446] 41566 40983 40367 39926 39579 ...
-##  - attr(*, "spec")=
-##   .. cols(
-##   ..   Sexo = col_character(),
-##   ..   Edad = col_character(),
-##   ..   `Relación con la actividad económica` = col_character(),
-##   ..   Periodo = col_double(),
-##   ..   Total = col_number()
-##   .. )
-##  - attr(*, "problems")=<externalptr>
-\end{verbatim}
-
 \subsection{Valores faltantes}\label{valores-faltantes}
-
-Con el objetivo de ver la cantidad de los datos faltantes la variable
-que tiene estos datos se utiliza la siguiente función:
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-7-1} \end{center}
-
-\begin{verbatim}
-##                                Sexo                                Edad 
-##                                   0                                   0 
-## Relación con la actividad económica                             Periodo 
-##                                   0                                   0 
-##                               Total 
-##                                 111
-\end{verbatim}
 
 Todos los valores ausentes se encuentran en \texttt{Total}
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-9-1} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-6-1.pdf}}
 
 Se observa que los valores faltantes vienen asociados a grupos de edad
 altos y cuya relación con la actividad económica es ``Parados que buscan
@@ -365,36 +345,16 @@ Se comprueba que la limpieza esté bien hecha, primero viendo si el
 formato de los datos es el adecuado y asegurando que no quedan valores
 faltantes.
 
-\begin{verbatim}
-## tibble [456 x 12] (S3: tbl_df/tbl/data.frame)
-##  $ Sexo           : Factor w/ 2 levels "Hombres","Mujeres": 1 1 1 1 1 1 1 1 1 1 ...
-##  $ Edad           : Ord.factor w/ 12 levels "16-19"<"20-24"<..: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ Periodo        : num [1:456] 2024 2023 2022 2021 2020 ...
-##  $ Total          : num [1:456] 1095 1046 1019 984 992 ...
-##  $ Activos        : num [1:456] 189 167 161 144 142 ...
-##  $ Ocupados       : num [1:456] 117.2 94.7 88.1 72.4 71 ...
-##  $ Parados        : num [1:456] 71.6 72.4 73.1 71.4 71.3 67.5 75.2 82.5 81.1 95.1 ...
-##  $ Parados_sin_exp: num [1:456] 42.7 43.8 44.3 46.6 39 42.2 49 54.2 52.8 69.8 ...
-##  $ Inactivos      : num [1:456] 906 879 857 840 850 ...
-##  $ Tasa_paro      : num [1:456] 37.9 43.3 45.3 49.7 50.1 ...
-##  $ Tasa_actividad : num [1:456] 17.2 16 15.8 14.6 14.4 ...
-##  $ Tasa_ocupacion : num [1:456] 10.7 9.05 8.65 7.36 7.16 ...
-\end{verbatim}
+\section{Análisis de las tasas}\label{anuxe1lisis-de-las-tasas}
 
-\begin{verbatim}
-##            Sexo            Edad         Periodo           Total         Activos 
-##               0               0               0               0               0 
-##        Ocupados         Parados Parados_sin_exp       Inactivos       Tasa_paro 
-##               0               0               0               0               0 
-##  Tasa_actividad  Tasa_ocupacion 
-##               0               0
-\end{verbatim}
+\subsection{Distribución de la tasa de actividad por
+sexo}\label{distribuciuxf3n-de-la-tasa-de-actividad-por-sexo}
 
-\section{Evolución temporal de las tasas con la
-brecha}\label{evoluciuxf3n-temporal-de-las-tasas-con-la-brecha}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf}}
 
-\#\#Evolucion de la tasa de paro por género y evolución de la brecha de
-la tasa de paro por género
+\subsection{Evolucion de la tasa de paro por género y evolución de la
+brecha de la tasa de paro por
+género}\label{evolucion-de-la-tasa-de-paro-por-guxe9nero-y-evoluciuxf3n-de-la-brecha-de-la-tasa-de-paro-por-guxe9nero}
 
 En este bloque de código se construyen varias representaciones gráficas
 con el fin de analizar la evolución de la tasa de paro y la brecha de
@@ -402,79 +362,35 @@ género a lo largo del tiempo. Para ello, se parte de una tabla en la que
 se calcula la variable \emph{brecha\_paro}, definida como la diferencia
 entre la tasa de paro de mujeres y la de hombres. Posteriormente, los
 datos se agrupan por periodo para obtener las tasas medias anuales de
-paro por sexo y la brecha media correspondiente. IMPORTAMOS EL ARCHIVO
-CSV
+paro por sexo y la brecha media correspondiente.
 
-Aggrupación de datos por periodo y por sexo
+Agrupación de datos por periodo y por sexo
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-16-1} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-11-1.pdf}}
 
-\begin{verbatim}
-## La gráfica enseña la evolución de la tasa de actividad en España entre los años 2006 y 2024, diferenciada por sexo. Por un lado, la proporción de hombres es mucho mayor a la de mujeres, cosa que va ligada a que los hombres siempre han tenido mayor participicaion en muchos mas sectores, como lo puede ser la construcción, y a que las mujeres se ligan mas al cuidado familiar.
-##     Pese a esto, la actividad masculina en 2008 se desacelera economicamnete, esto provocado por la crisis financiera que se vivió en la epoca. Es en 2017/18 que comienza su recuperación, pero nunca a los niveles previos a la crisis. En 2020, debido al Covid-19, se observa otra caida en la tendencía (porque el Covid-19 afectó a muchos sectores, como la industría por ejemplo). Aunque se observa también su recuperació, tampoco volvió a los nieveles previos de la crisis de 2008
-##     por el otro lado, la tasa de actividad femenina se muestra, en el periodo, ascendente ya que han ido incorporandose cada vez mas en el mercado laboral español.
-\end{verbatim}
+La gráfica enseña la evolución de la tasa de actividad en España entre
+los años 2006 y 2024, diferenciada por sexo. Por un lado, la proporción
+de hombres es mucho mayor a la de mujeres, cosa que va ligada a que los
+hombres siempre han tenido mayor participicaion en muchos mas sectores,
+como lo puede ser la construcción, y a que las mujeres se ligan mas al
+cuidado familiar. Pese a esto, la actividad masculina en 2008 se
+desacelera economicamnete, esto provocado por la crisis financiera que
+se vivió en la epoca. Es en 2017/18 que comienza su recuperación, pero
+nunca a los niveles previos a la crisis. En 2020, debido al Covid-19, se
+observa otra caida en la tendencía (porque el Covid-19 afectó a muchos
+sectores, como la industría por ejemplo). Aunque se observa también su
+recuperació, tampoco volvió a los nieveles previos de la crisis de 2008
+por el otro lado, la tasa de actividad femenina se muestra, en el
+periodo, ascendente ya que han ido incorporandose cada vez mas en el
+mercado laboral español
 
 Tasa de actividad por edad y sexo
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-19-1} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-13-1.pdf}}
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-20-1} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-14-1.pdf}}
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-21-1} \end{center}
-
-TASA DE PARO POR SEXO
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-22-1} \end{center}
-
-\begin{verbatim}
-## # A tibble: 228 x 5
-##    Periodo Edad  Hombres Mujeres brecha_paro
-##      <dbl> <chr>   <dbl>   <dbl>       <dbl>
-##  1    2024 16-19    37.9    44.4      6.43  
-##  2    2023 16-19    43.3    42.8     -0.493 
-##  3    2022 16-19    45.3    44.4     -0.912 
-##  4    2021 16-19    49.7    52.3      2.69  
-##  5    2020 16-19    50.1    61.0     10.9   
-##  6    2019 16-19    42.8    48.4      5.59  
-##  7    2018 16-19    49.7    49.7      0.0375
-##  8    2017 16-19    54.2    55.1      0.919 
-##  9    2016 16-19    58.9    61.6      2.74  
-## 10    2015 16-19    64.7    70.7      6.04  
-## # i 218 more rows
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 19 x 4
-##    Periodo tasa_hombres tasa_mujeres brecha_paro_total
-##      <dbl>        <dbl>        <dbl>             <dbl>
-##  1    2006         6.66         11.0            4.38  
-##  2    2007         6.72         10.8            4.06  
-##  3    2008        10.3          13.2            2.90  
-##  4    2009        17.7          18.0            0.310 
-##  5    2010        20.1          19.9           -0.135 
-##  6    2011        21.6          21.6           -0.0770
-##  7    2012        25.2          25.3            0.0984
-##  8    2013        26.6          27.3            0.704 
-##  9    2014        24.7          26.2            1.45  
-## 10    2015        22.5          24.4            1.91  
-## 11    2016        20.1          22.6            2.47  
-## 12    2017        17.7          19.9            2.22  
-## 13    2018        15.8          17.9            2.13  
-## 14    2019        14.2          17.3            3.04  
-## 15    2020        16.1          19.7            3.55  
-## 16    2021        15.7          18.4            2.73  
-## 17    2022        13.7          16.2            2.52  
-## 18    2023        12.9          15.5            2.52  
-## 19    2024        11.9          14.6            2.69
-\end{verbatim}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-23-1} \end{center}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-23-2} \end{center}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-23-3} \end{center}
-
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-15-1.pdf}}
 El primer gráfico (\texttt{evo\_brecha\_total}) representa la evolución
 de la brecha de paro total tanto con lineas como con puntos para mostrar
 la tendencia y los valores anuales. En él se observa cómo la diferencia
@@ -513,58 +429,6 @@ años, y los datos se dividen en distintos subconjuntos (df\_1, df\_2,
 df\_3) para facilitar la representación y mejorar la legibilidad de los
 gráficos.
 
-\begin{verbatim}
-## # A tibble: 228 x 5
-##    Edad  Periodo Hombres Mujeres brecha_paro
-##    <chr>   <dbl>   <dbl>   <dbl>       <dbl>
-##  1 16-19    2024    37.9    44.4      6.43  
-##  2 16-19    2023    43.3    42.8     -0.493 
-##  3 16-19    2022    45.3    44.4     -0.912 
-##  4 16-19    2021    49.7    52.3      2.69  
-##  5 16-19    2020    50.1    61.0     10.9   
-##  6 16-19    2019    42.8    48.4      5.59  
-##  7 16-19    2018    49.7    49.7      0.0375
-##  8 16-19    2017    54.2    55.1      0.919 
-##  9 16-19    2016    58.9    61.6      2.74  
-## 10 16-19    2015    64.7    70.7      6.04  
-## # i 218 more rows
-\end{verbatim}
-
-\begin{verbatim}
-##  [1] "16-19" "20-24" "25-29" "30-34" "35-39" "40-44" "45-49" "50-54" "55-59"
-## [10] "60-64" "65-69" "70+"
-\end{verbatim}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-24-1} \end{center}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-24-2} \end{center}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-24-3} \end{center}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-24-4} \end{center}
-
-Los primeros gráficos utilizan facet\_wrap() para mostrar la evolución
-temporal de la brecha de paro dentro de cada grupo de edad. Cada panel
-representa un intervalo etario y permite observar cómo la diferencia
-entre hombres y mujeres ha variado a lo largo del tiempo. Estas
-visualizaciones, evidencian que la brecha no se comporta de manera
-homogénea entre generaciones: mientras que en los grupos más jóvenes las
-diferencias tienden a fluctuar con mayor intensidad, en los grupos
-intermedios y de mayor edad la brecha presenta una evolución más
-estable, aunque persiste una desigualdad estructural en la mayoría de
-los casos.
-
-Por último, se incluye una representación global en la que se superponen
-todas las series de edad en un mismo gráfico, utilizando una paleta de
-colores vivos definida manualmente. Este gráfico tiene un carácter
-eminentemente exploratorio y permite comparar visualmente la magnitud y
-la variabilidad de la brecha de paro entre cohortes. En conjunto, este
-bloque de código contribuye a profundizar en el análisis
-intergeneracional de la desigualdad laboral, revelando que las
-diferencias por género en el desempleo no afectan por igual a todos los
-grupos de edad y que ciertos tramos, especialmente los más jóvenes,
-muestran una mayor volatilidad a lo largo del tiempo.
-
 \subsection{Gráfica de Barras comparación grupos de edades con mayor
 brecha en 2006 y en
 2024}\label{gruxe1fica-de-barras-comparaciuxf3n-grupos-de-edades-con-mayor-brecha-en-2006-y-en-2024}
@@ -581,8 +445,7 @@ brecha para ese año. De esta forma, el código permite observar en
 paralelo la estructura intergeneracional de las desigualdades laborales
 y cómo varía la media de brecha entre periodos.
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-25-1} \end{center}
-
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-17-1.pdf}}
 Los gráficos resultantes muestran, de forma clara y comparativa, cómo la
 intensidad de la brecha de género en el desempleo varía según la edad y
 el momento temporal. En los primeros años analizados, la brecha es
@@ -600,84 +463,7 @@ generacionales y se identifican con claridad los grupos que más
 contribuyen a mantener las disparidades laborales entre hombres y
 mujeres a lo largo del tiempo.
 
-Estadisiticas
-
-\section{desv est y varianza}\label{desv-est-y-varianza}
-
-\begin{verbatim}
-## # A tibble: 2 x 3
-##   Sexo    sd_ocupados var_ocupados
-##   <chr>         <dbl>        <dbl>
-## 1 Hombres        591.      349261.
-## 2 Mujeres        490.      240316.
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 1 x 2
-##   brecha_ocup brecha_inact
-##         <dbl>        <dbl>
-## 1       -166.         247.
-\end{verbatim}
-
-\begin{verbatim}
-## # A tibble: 19 x 4
-##    Periodo Hombres Mujeres Brecha
-##      <dbl>   <dbl>   <dbl>  <dbl>
-##  1    2006    66.1    48.2  17.9 
-##  2    2007    66.2    49.2  16.9 
-##  3    2008    66.4    50.7  15.6 
-##  4    2009    65.4    51.8  13.5 
-##  5    2010    64.9    52.7  12.2 
-##  6    2011    64.3    53.6  10.7 
-##  7    2012    64.1    54.3   9.72
-##  8    2013    63.8    54.6   9.13
-##  9    2014    63.5    54.7   8.83
-## 10    2015    63.8    55.1   8.71
-## 11    2016    63.7    55.4   8.29
-## 12    2017    63.8    55.4   8.43
-## 13    2018    64.0    55.5   8.50
-## 14    2019    64.1    56.0   8.09
-## 15    2020    62.9    55.0   7.93
-## 16    2021    64.0    56.9   7.03
-## 17    2022    64.7    57.3   7.33
-## 18    2023    65.0    58.3   6.78
-## 19    2024    65.5    58.5   7.01
-\end{verbatim}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-29-1} \end{center}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-30-1} \end{center}
-
-hombres/mujeres
-
-\begin{verbatim}
-## # A tibble: 19 x 4
-##    Periodo Hombres Mujeres Razon
-##      <dbl>   <dbl>   <dbl> <dbl>
-##  1    2006    66.1    48.2  1.37
-##  2    2007    66.2    49.2  1.34
-##  3    2008    66.4    50.7  1.31
-##  4    2009    65.4    51.8  1.26
-##  5    2010    64.9    52.7  1.23
-##  6    2011    64.3    53.6  1.20
-##  7    2012    64.1    54.3  1.18
-##  8    2013    63.8    54.6  1.17
-##  9    2014    63.5    54.7  1.16
-## 10    2015    63.8    55.1  1.16
-## 11    2016    63.7    55.4  1.15
-## 12    2017    63.8    55.4  1.15
-## 13    2018    64.0    55.5  1.15
-## 14    2019    64.1    56.0  1.14
-## 15    2020    62.9    55.0  1.14
-## 16    2021    64.0    56.9  1.12
-## 17    2022    64.7    57.3  1.13
-## 18    2023    65.0    58.3  1.12
-## 19    2024    65.5    58.5  1.12
-\end{verbatim}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-32-1} \end{center}
-
-por edad
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf}}
 
 \section{Distribución de la población en el mercado
 laboral}\label{distribuciuxf3n-de-la-poblaciuxf3n-en-el-mercado-laboral}
@@ -708,8 +494,6 @@ para evaluar la claridad y estructura de la visualización antes de
 desarrollar la función que posteriormente generó automáticamente el
 mismo tipo de gráfico para todos los años del periodo analizado.
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-33-1} \end{center}
-
 Tras la comprobación inicial con los datos de 2024, se elaboró este
 bloque de código para automatizar la generación del mismo tipo de
 gráfico para todos los años del conjunto de datos. Para ello, se utiliza
@@ -733,14 +517,14 @@ laboral a lo largo del tiempo y entre sexos.
 ## [[1]]
 \end{verbatim}
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-34-1} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf}}
 
 \begin{verbatim}
 ## 
 ## [[2]]
 \end{verbatim}
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-34-2} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-20-2.pdf}}
 
 Del análisis de los gráficos se observa una estructura bastante estable
 del mercado laboral por edad y sexo a lo largo del tiempo, con ligeras
@@ -777,42 +561,6 @@ De esta manera, se obtiene una visión más detallada del peso relativo de
 cada grupo de edad en el total de personas paradas de cada sexo y su
 evolución temporal.
 
-\begin{verbatim}
-## [1] 2024 2006
-\end{verbatim}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-35-1} \end{center}
-
-En estas gráficas se aprecia cómo la distribución del paro dentro de
-cada sexo ha cambiado en los últimos años, influida por transformaciones
-estructurales del mercado laboral y demográficas. La elevación
-progresiva de la edad de jubilación y el retraso en la salida definitiva
-del mercado laboral han provocado un aumento en la proporción de
-personas activas en edades más avanzadas, lo que se traduce también en
-una mayor representación del paro entre los grupos de 55 años o más.
-Esto indica que el desempleo ya no es un fenómeno concentrado
-exclusivamente en edades intermedias, sino que se extiende también hacia
-los trabajadores de mayor edad, quienes permanecen más tiempo en el
-mercado laboral. Por el contrario, los grupos más jóvenes (de 16 a 24
-años) han reducido su presencia relativa en el total de personas
-desempleadas, debido principalmente a una incorporación más tardía al
-mercado laboral como resultado del alargamiento de la etapa educativa y
-del aumento de la formación superior.
-
-En cuanto al análisis por género, se observa que la distribución del
-paro dentro de cada sexo mantiene ciertas similitudes, pero también
-muestra matices importantes. En los grupos de edad intermedia (25-54
-años), las mujeres tienden a concentrar una mayor proporción del
-desempleo dentro de su propio sexo, lo que refleja una persistente
-desigualdad estructural en el acceso y la estabilidad del empleo
-femenino, especialmente en etapas donde la conciliación familiar y
-laboral juega un papel determinante. Sin embargo, entre los hombres, el
-paro se distribuye de forma algo más homogénea entre los distintos
-grupos de edad, con un incremento más visible en las edades avanzadas,
-vinculado al impacto de los sectores más cíclicos (como la construcción
-o la industria) y a la dificultad de reinserción laboral tras la pérdida
-del empleo.
-
 En conjunto, estas gráficas ponen de manifiesto un proceso de
 envejecimiento del desempleo y una convergencia progresiva entre hombres
 y mujeres en la estructura interna del paro, aunque todavía persisten
@@ -824,58 +572,30 @@ género que aún caracterizan el mercado laboral español.
 
 \#Distribución de ocupados e inactivos por sexo
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-37-1} \end{center}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf}}
 
-\#act inact
+\section{act inact}\label{act-inact}
 
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-38-1} \end{center}
-
-\#grafico violin
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-39-1} \end{center}
-
-\#feminizacion
-
-\begin{verbatim}
-## # A tibble: 228 x 5
-##    Periodo Edad  Hombres Mujeres Indice_feminizacion
-##      <dbl> <fct>   <dbl>   <dbl>               <dbl>
-##  1    2006 16-19    244.    142.                36.8
-##  2    2006 20-24    928.    727.                43.9
-##  3    2006 25-29   1594.   1285.                44.6
-##  4    2006 30-34   1790.   1327.                42.6
-##  5    2006 35-39   1709.   1198.                41.2
-##  6    2006 40-44   1565.   1101.                41.3
-##  7    2006 45-49   1399.    947.                40.4
-##  8    2006 50-54   1116.    668                 37.5
-##  9    2006 55-59    871.    459.                34.5
-## 10    2006 60-64    491     230.                31.9
-## # i 218 more rows
-\end{verbatim}
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-40-1} \end{center}
-
-las mujeres tienen mayor presencia en la ocupación en los grupos de edad
-entre 30 y 54 años, especialmente desde 2010. los jóvenes (16--24 años)
-y mayores (65+) presentan menor participación femenina y más
-fluctuaciones.
+AQUI HAY QUE CALCULAR EL COCIENTE ENTRE ACTIVOS E INACTIVOS
 
 \section{Resultados}\label{resultados}
 
-\section{Conclusión}\label{conclusiuxf3n}
+\subsection{desv est y varianza}\label{desv-est-y-varianza}
 
-\section{-------------------------- JOE
-\ldots\ldots\ldots\ldots\ldots.}\label{joe-.}
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Sexo    sd_ocupados var_ocupados
+##   <fct>         <dbl>        <dbl>
+## 1 Hombres        591.      349261.
+## 2 Mujeres        490.      240316.
+\end{verbatim}
 
-\subsection{GRAFICAS JOE}\label{graficas-joe}
-
-\section{---------------------------------}\label{section}
-
-\section{--------------------------JOSE-------------}\label{jose-}
-
-\#---------------------------------------------------
-
-\begin{center}\includegraphics{ProyectoAED_files/figure-latex/unnamed-chunk-42-1} \end{center}
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   brecha_ocup brecha_inact
+##         <dbl>        <dbl>
+## 1       -166.         247.
+\end{verbatim}
 
 \begin{verbatim}
 ## 
