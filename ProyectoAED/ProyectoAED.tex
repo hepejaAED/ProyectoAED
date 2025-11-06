@@ -288,6 +288,10 @@ significancia estadística de los resutlados.
 ##     intersect, setdiff, setequal, union
 \end{verbatim}
 
+\begin{verbatim}
+## Warning: package 'treemapify' was built under R version 4.5.2
+\end{verbatim}
+
 \section{Exploración inicial}\label{exploraciuxf3n-inicial}
 
 \subsection{Importación y verificación
@@ -947,7 +951,7 @@ y cómo varía la media de brecha entre periodos.
     \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{ylim}\NormalTok{(rango\_y) }\SpecialCharTok{+}
     \FunctionTok{labs}\NormalTok{(}
-      \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Brecha de paro por grupo de edad {-}"}\NormalTok{, año),}
+      \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Brecha de paro por grupo de edad"}\NormalTok{),}
       \AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}
       \AttributeTok{y =} \StringTok{"Brecha (\%)"}
 \NormalTok{    ) }\SpecialCharTok{+}
@@ -958,46 +962,38 @@ y cómo varía la media de brecha entre periodos.
       \AttributeTok{linewidth =} \DecValTok{1}
 \NormalTok{    ) }\SpecialCharTok{+}
     \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-    \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+    \FunctionTok{theme}\NormalTok{(}
+      \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+      \AttributeTok{plot.margin =} \FunctionTok{margin}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{30}\NormalTok{)  }\CommentTok{\# \textless{}{-}{-} añade espacio alrededor del gráfico}
+\NormalTok{    )}
 \NormalTok{\})}
 
-\NormalTok{graficos\_brecha\_paro}
+\FunctionTok{library}\NormalTok{(cowplot)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [[1]]
+## 
+## Adjuntando el paquete: 'cowplot'
 \end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:lubridate':
+## 
+##     stamp
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot\_grid}\NormalTok{(}
+  \AttributeTok{plotlist =}\NormalTok{ graficos\_brecha\_paro[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{],}
+  \AttributeTok{ncol =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"2024"}\NormalTok{, }\StringTok{"2023"}\NormalTok{, }\StringTok{"2010"}\NormalTok{, }\StringTok{"2007"}\NormalTok{)  }\CommentTok{\# opcional}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf}}
-
-\begin{verbatim}
-## 
-## [[2]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-2.pdf}}
-
-\begin{verbatim}
-## 
-## [[3]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf}}
-
-\begin{verbatim}
-## 
-## [[4]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-4.pdf}}
-
-\begin{verbatim}
-## 
-## [[5]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf}}
 Los gráficos resultantes muestran, de forma clara y comparativa, cómo la
 intensidad de la brecha de género en el desempleo varía según la edad y
 el momento temporal. En los primeros años analizados, la brecha es
@@ -1268,12 +1264,16 @@ laboral a lo largo del tiempo y entre sexos.
   \FunctionTok{select}\NormalTok{(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(Inactivos,Ocupados,Parados),}\AttributeTok{names\_to =} \StringTok{"Estado"}\NormalTok{,}\AttributeTok{values\_to =} \StringTok{"N\_Personas"}\NormalTok{)}
 
-\NormalTok{años }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2024}\NormalTok{, }\DecValTok{2020}\NormalTok{, }\DecValTok{2010}\NormalTok{, }\DecValTok{2007}\NormalTok{, }\DecValTok{2006}\NormalTok{)}
+\NormalTok{años1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2024}\NormalTok{, }\DecValTok{2006}\NormalTok{)}
 
-\NormalTok{graficos\_composicion\_por\_año }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año) \{}
+\NormalTok{graficos\_composicion\_por\_año }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años1, }\ControlFlowTok{function}\NormalTok{(año) \{}
 \NormalTok{  datos\_composicion }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{filter}\NormalTok{(Periodo }\SpecialCharTok{==}\NormalTok{ año) }\SpecialCharTok{\%\textgreater{}\%}
-    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ N\_Personas, }\AttributeTok{fill =}\NormalTok{ Estado)) }\SpecialCharTok{+}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}
+      \AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)),}
+      \AttributeTok{y =}\NormalTok{ N\_Personas,}
+      \AttributeTok{fill =}\NormalTok{ Estado}
+\NormalTok{    )) }\SpecialCharTok{+}
     \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
     \FunctionTok{labs}\NormalTok{(}
       \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Composición del mercado laboral por grupo de edad {-}"}\NormalTok{, año),}
@@ -1282,8 +1282,11 @@ laboral a lo largo del tiempo y entre sexos.
       \AttributeTok{fill =} \StringTok{"Estado"}
 \NormalTok{    ) }\SpecialCharTok{+}
     \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-    \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}\SpecialCharTok{+}
-    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Sexo)}\CommentTok{\#Añadir o quitar según queramos comparar hombres y mujeres o no }
+    \FunctionTok{theme}\NormalTok{(}
+      \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+      \AttributeTok{plot.margin =} \FunctionTok{margin}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{30}\NormalTok{)  }\CommentTok{\# ← más espacio alrededor del gráfico}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Sexo) }\CommentTok{\# Añadir o quitar según quieras comparar hombres y mujeres}
 \NormalTok{\})}
 
 \NormalTok{graficos\_composicion\_por\_año}
@@ -1302,27 +1305,6 @@ laboral a lo largo del tiempo y entre sexos.
 \end{verbatim}
 
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf}}
-
-\begin{verbatim}
-## 
-## [[3]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-3.pdf}}
-
-\begin{verbatim}
-## 
-## [[4]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf}}
-
-\begin{verbatim}
-## 
-## [[5]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf}}
 
 Del análisis de los gráficos se observa una estructura bastante estable
 del mercado laboral por edad y sexo a lo largo del tiempo, con ligeras
@@ -1361,7 +1343,17 @@ evolución temporal.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{graficos\_parados\_proporcion\_por\_año}\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año)\{}
+\NormalTok{años1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2024 2006
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{graficos\_parados\_proporcion\_por\_año}\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años1, }\ControlFlowTok{function}\NormalTok{(año)\{}
 \NormalTok{df\_clean }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{filter}\NormalTok{(Periodo}\SpecialCharTok{==}\NormalTok{año) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{group\_by}\NormalTok{(Sexo, Periodo) }\SpecialCharTok{\%\textgreater{}\%}
@@ -1370,7 +1362,7 @@ evolución temporal.
   \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ Proporcion\_parados\_en\_sexo, }\AttributeTok{fill =}\NormalTok{ Sexo)) }\SpecialCharTok{+}
   \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{labs}\NormalTok{(}
-    \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Distribución del paro dentro de cada sexo {-}"}\NormalTok{,año),}
+    \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Distribución del paro por sexo {-}"}\NormalTok{,año),}
     \AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}
     \AttributeTok{y =} \StringTok{"Proporción del total de parados del mismo sexo"}\NormalTok{,}
     \AttributeTok{fill =} \StringTok{"Sexo"}
@@ -1379,43 +1371,14 @@ evolución temporal.
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
 \NormalTok{\})}
 
-\NormalTok{graficos\_parados\_proporcion\_por\_año}
+\FunctionTok{plot\_grid}\NormalTok{(}
+  \AttributeTok{plotlist =}\NormalTok{ graficos\_parados\_proporcion\_por\_año[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{],}
+  \AttributeTok{ncol =} \DecValTok{2} \CommentTok{\# opcional}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [[1]]
-\end{verbatim}
-
 \pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf}}
-
-\begin{verbatim}
-## 
-## [[2]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-2.pdf}}
-
-\begin{verbatim}
-## 
-## [[3]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf}}
-
-\begin{verbatim}
-## 
-## [[4]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-4.pdf}}
-
-\begin{verbatim}
-## 
-## [[5]]
-\end{verbatim}
-
-\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf}}
 En estas gráficas se aprecia cómo la distribución del paro dentro de
 cada sexo ha cambiado en los últimos años, influida por transformaciones
 estructurales del mercado laboral y demográficas. La elevación
