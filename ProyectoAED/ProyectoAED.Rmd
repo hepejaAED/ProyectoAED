@@ -65,38 +65,16 @@ pacman::p_load(
 
 ## Importación y verificación inicial
 
-- **Codificación e importación**: Se verifica la codificación y se importa el archivo CSV delimitado por tabulaciones, se indica que el separador decimal es la coma y que los valores *NA* están codificados como `".."`
-
-```{r,echo = FALSE}
-archivo<-"data/65948.csv"
-guess_encoding(archivo)
-```
+- **Codificación e importación**: La codificación del los datos brutos es `UFT-8` con una confianza del $100\%$. Archivo delimitado por tabulaciones, se indica que el separador decimal es la coma y que los valores *NA* están codificados como `".."`
 
 ```{r,echo = FALSE}
 df<-read_delim(archivo, delim = "\t", escape_double = FALSE, na = "..", 
                trim_ws = TRUE,locale = locale(decimal_mark = ","))
 ```
 
-```{r,echo = FALSE}
-head(df)
-```
-
-
+Las variables del dataframe original son Sexo, Edad, Relación con la actividad económica, Periodo y Total.
 
 ## Valores faltantes
-
-<!-- Con el objetivo de ver la cantidad de los datos faltantes la variable que tiene estos datos se utiliza la siguiente función:  -->
-
-<!-- ```{r,echo = FALSE} -->
-<!-- vis_miss(df %>% rename(Situacion_Laboral = "Relación con la actividad económica"))+theme( -->
-<!--     axis.text.x = element_text(hjust = 1.2),  -->
-<!--     plot.margin = unit(c(1, 1, 1, 1), "cm")  -->
-<!--   ) -->
-<!-- ``` -->
-
-<!-- ```{r,echo = FALSE} -->
-<!-- sapply(df,function(x) sum(is.na(x))) -->
-<!-- ``` -->
 
 Todos los valores ausentes se encuentran en `Total`
 
