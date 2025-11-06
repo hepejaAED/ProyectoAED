@@ -78,10 +78,12 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Full title of the paper (Capitalized)}
+\Title{Evolución de la actividad, ocupación para grupos de edad mayores
+de 16 años}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Full title of the paper (Capitalized)}
+\TitleCitation{Evolución de la actividad, ocupación para grupos de edad
+mayores de 16 años}
 
 % Author Orchid ID: enter ID or remove command
 %\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
@@ -89,39 +91,29 @@
 
 
 % Authors, for the paper (add full first names)
-\Author{Dominik
-Leutnant$^{1,2,\ddagger,*}$\href{https://orcid.org/0000-0003-3293-2315}
-{\orcidicon}, John Doe$^{2, \dagger, \ddagger}$}
+\Author{Jeremy Joel Aguilar Marin$^{}$, Jose Aguilar Milla$^{}$, Javier
+Herrero Pérez$^{}$}
 
 
 %\longauthorlist{yes}
 
 
 % MDPI internal command: Authors, for metadata in PDF
-\AuthorNames{Dominik Leutnant, John Doe}
+\AuthorNames{Jeremy Joel Aguilar Marin, Jose Aguilar Milla, Javier
+Herrero Pérez}
 
 % MDPI internal command: Authors, for citation in the left column
-%\AuthorCitation{Lastname, F.; Lastname, F.; Lastname, F.}
-% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
-\AuthorCitation{Leutnant, D.; Doe, J.}
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
-$^{1}$ \quad Muenster University of Applied Sciences - Institute for
-Infrastructure, Water, Resources, Environment Correnstr. 25, 48149
-Muenster,
-Germany; \href{mailto:leutnant@fh-muenster.de}{\nolinkurl{leutnant@fh-muenster.de}}\\
-$^{2}$ \quad Your department Street, City,
-Country; \href{mailto:mail@mail.com}{\nolinkurl{mail@mail.com}}\\
 }
 
 % Contact information of the corresponding author
-\corres{Correspondence: \href{mailto:leutnant@fh-muenster.de}{\nolinkurl{leutnant@fh-muenster.de}};
-Tel.: +XX-000-00-0000.}
+\corres{Correspondence: }
 
 % Current address and/or shared authorship
-\firstnote{Current address: Updated affiliation}
-\secondnote{These authors contributed equally to this work.}
+
+
 
 
 
@@ -136,17 +128,6 @@ Tel.: +XX-000-00-0000.}
 %\conference{} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\)
-\abstract{A single paragraph of about 200 words maximum. For research
-articles, abstracts should give a pertinent overview of the work. We
-strongly encourage authors to use the following style of structured
-abstracts, but without headings: 1) Background: Place the question
-addressed in a broad context and highlight the purpose of the study; 2)
-Methods: Describe briefly the main methods or treatments applied; 3)
-Results: Summarize the article's main findings; and 4) Conclusion:
-Indicate the main conclusions or interpretations. The abstract should be
-an objective representation of the article, it must not contain results
-which are not presented and substantiated in the main text and should
-not exaggerate the main conclusions.}
 
 
 % Keywords
@@ -275,406 +256,1649 @@ subject discipline.).}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Version}\label{version}
+\section{Introducción}\label{introducciuxf3n}
 
-This Rmd-skeleton uses the mdpi Latex template published 2024-03-21.
-However, the official template gets more frequently updated than the
-\textbf{rticles} package. Therefore, please make sure prior to paper
-submission, that you're using the most recent .cls, .tex and .bst files
-(available \href{http://www.mdpi.com/authors/latex}{here}).
+Este artículo presenta un enfoque en R para el Análisis Exploratorio de
+Datos de la Encuesta de Población Activa (EPA), centrándose en la
+evolución histórica de la brecha de género en el mercado laboral
+español. Utilizando el ecosistema \texttt{tidyverse}, el estudio
+comienza con una limpieza y transformación de los datos empleando
+\texttt{dplyr} y el cálculo de Tasa de paro, actividad y ocupación,
+claves para el análisis. Seguido de la visualización con
+\texttt{ggplot2} para ilustrar la evolución temporal. Por último, se
+validan los resultados con pruebas de \emph{t Student} para confirmar la
+significancia estadística de los resutlados.
 
-\section{Article Header Information}\label{article-header-information}
+\subsection{Carga de Librerías}\label{carga-de-libreruxedas}
 
-The YAML header includes information needed mainly for formatting the
-front and back matter of the article. Required elements include:
+\begin{verbatim}
+## 
+## Adjuntando el paquete: 'dplyr'
+\end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{title}\KeywordTok{:}\AttributeTok{ Title of the paper}
-\FunctionTok{author}\KeywordTok{:}
-\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ }\FunctionTok{name}\KeywordTok{:}\AttributeTok{ first and last name}
-\FunctionTok{    affil}\KeywordTok{: }\CharTok{|}
-\NormalTok{      One or more comma seperated numbers corresponding to affilitation}
-\NormalTok{      and one or more  comma seperated symbols corresponding }
-\NormalTok{      optional notes.}
-\AttributeTok{    }\FunctionTok{orcid}\KeywordTok{:}\AttributeTok{ optional orcid number}
-\FunctionTok{affiliation}\KeywordTok{:}\AttributeTok{  }
-\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ }\FunctionTok{num}\KeywordTok{:}\AttributeTok{ 1,..., n for each affiliation}
-\AttributeTok{    }\FunctionTok{address}\KeywordTok{:}\AttributeTok{ required}
-\AttributeTok{    }\FunctionTok{email}\KeywordTok{:}\AttributeTok{ required}
-\FunctionTok{authorcitation}\KeywordTok{: }\CharTok{|}
-\NormalTok{  Lastname, F.}
-\FunctionTok{correspondence}\KeywordTok{: }\CharTok{|}
-\NormalTok{  email@email.com; Tel.: +XX{-}000{-}00{-}0000.}
-\FunctionTok{journal}\KeywordTok{:}\AttributeTok{ notspecified}
-\FunctionTok{type}\KeywordTok{:}\AttributeTok{ article}
-\FunctionTok{status}\KeywordTok{:}\AttributeTok{ submit}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
 
-Journal options are in Table \ref{tab:mdpinames}. The \texttt{status}
-variable should generally not be changed by authors. The \texttt{type}
-variable describes the type of of submission and defaults to
-\texttt{article} but can be replaced with any of the ones in Table
-\ref{tab:mdpitype}
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
 
-\begin{table}
+\section{Exploración inicial}\label{exploraciuxf3n-inicial}
 
-\caption{\label{tab:mdpitype}MDPI article types.}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-abstract & entry & retraction\\
-addendum & expressionofconcern & review\\
-article & extendedabstract & perspective\\
-book & datadescriptor & protocol\\
-bookreview & editorial & shortnote\\
-\addlinespace
-briefreport & essay & studyprotocol\\
-casereport & erratum & systematicreview\\
-comment & hypothesis & supfile\\
-commentary & interestingimage & technicalnote\\
-communication & obituary & viewpoint\\
-\addlinespace
-conferenceproceedings & opinion & guidelines\\
-correction & projectreport & registeredreport\\
-conferencereport & reply & tutorial\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Journal Specific YAML
-variables}\label{journal-specific-yaml-variables}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# for journal Diversity,}
-\CommentTok{\# add the Life Science Identifier using:}
-\FunctionTok{lsid}\KeywordTok{:}\AttributeTok{ http://zoobank.org/urn:lsid:zoobank.org:act:nnnn}
-
-
-\CommentTok{\# for journal Applied Sciences}
-\CommentTok{\# add featured application}
-\FunctionTok{featuredapplication}\KeywordTok{: }\CharTok{|}
-\NormalTok{  Authors are encouraged to provide a concise }
-\NormalTok{  description of the specific application or }
-\NormalTok{  a potential application of the work. This }
-\NormalTok{  section is not mandatory.}
-
-\CommentTok{\# for the journal Data}
-\CommentTok{\# add dataset doi and license}
-\FunctionTok{dataset}\KeywordTok{:}\AttributeTok{ https://doi.org/10.1000/182}
-\FunctionTok{datasetlicense}\KeywordTok{:}\AttributeTok{ CC{-}BY{-}4.0}
-
-\CommentTok{\# for the journal Toxins}
-\CommentTok{\# add key contributions}
-\FunctionTok{keycontributions}\KeywordTok{: }\CharTok{|}
-\NormalTok{  The breakthroughs or highlights of the manuscript. }
-\NormalTok{  Authors can write one or two sentences to describe }
-\NormalTok{  the most important part of the paper.}
-
-\CommentTok{\# for the journal Encyclopedia}
-\FunctionTok{encyclopediadef}\KeywordTok{: }\CharTok{|}
-\NormalTok{  For entry manuscripts only: please provide a brief overview}
-\NormalTok{  of the entry title instead of an abstract.}
-\FunctionTok{entrylink}\KeywordTok{:}\AttributeTok{ The Link to this entry published on the encyclopedia platform.}
-
-\CommentTok{\# for the journal Advances in Respiratory Medicine}
-\CommentTok{\# add highlights}
-\FunctionTok{addhighlights}\KeywordTok{: }\CharTok{|}
-\NormalTok{  This is an obligatory section in “Advances in Respiratory Medicine”, }
-\NormalTok{  whose goal is to increase the discoverability and readability of the}
-\NormalTok{  article via search engines and other scholars. Highlights should not }
-\NormalTok{  be a copy of the abstract, but a simple text allowing the reader to }
-\NormalTok{  quickly and simplified find out what the article is about and what can }
-\NormalTok{  be cited from it. Each of these parts should be devoted up to 2\textasciitilde{}bullet }
-\NormalTok{  points.}
-\end{Highlighting}
-\end{Shaded}
-
-\startlandscape
-
-\begin{longtable}[t]{llllllll}
-\caption{\label{tab:mdpinames}MDPI journal names.}\\
-\toprule
-acoustics & biomedinformatics & dentistry & galaxies & jcp & metabolites & philosophies & socsci\\
-actuators & biomimetics & dermato & games & jcs & metals & photochem & software\\
-addictions & biomolecules & dermatopathology & gases & jcto & meteorology & photonics & soilsystems\\
-admsci & biophysica & designs & gastroent & jdb & methane & phycology & solar\\
-adolescents & biosensors & devices & gastrointestdisord & jeta & metrology & physchem & solids\\
-\addlinespace
-aerobiology & biotech & diabetology & gels & jfb & micro & physics & spectroscj\\
-aerospace & birds & diagnostics & genealogy & jfmk & microarrays & physiologia & sports\\
-agriculture & bloods & dietetics & genes & jimaging & microbiolres & plants & standards\\
-agriengineering & blsf & digital & geographies & jintelligence & micromachines & plasma & stats\\
-agrochemicals & brainsci & disabilities & geohazards & jlpea & microorganisms & platforms & std\\
-\addlinespace
-agronomy & breath & diseases & geomatics & jmmp & microplastics & pollutants & stresses\\
-ai & buildings & diversity & geosciences & jmp & minerals & polymers & surfaces\\
-air & businesses & dna & geotechnics & jmse & mining & polysaccharides & surgeries\\
-algorithms & cancers & drones & geriatrics & jne & modelling & poultry & suschem\\
-allergies & carbon & dynamics & grasses & jnt & molbank & powders & sustainability\\
-\addlinespace
-alloys & cardiogenetics & earth & gucdd & jof & molecules & preprints & symmetry\\
-analytica & catalysts & ebj & hazardousmatters & joitmc & mps & proceedings & synbio\\
-analytics & cells & ecologies & healthcare & jor & msf & processes & systems\\
-anatomia & ceramics & econometrics & hearts & journalmedia & mti & prosthesis & targets\\
-animals & challenges & economies & hemato & jox & muscles & proteomes & taxonomy\\
-\addlinespace
-antibiotics & chemengineering & education & hematolrep & jpm & nanoenergyadv & psf & technologies\\
-antibodies & chemistry & ejihpe & heritage & jrfm & nanomanufacturing & psych & telecom\\
-antioxidants & chemosensors & electricity & higheredu & jsan & nanomaterials & psychiatryint & test\\
-applbiosci & chemproc & electrochem & highthroughput & jtaer & ncrna & psychoactives & textiles\\
-appliedchem & children & electronicmat & histories & jvd & ndt & publications & thalassrep\\
-\addlinespace
-appliedmath & chips & electronics & horticulturae & jzbg & network & quantumrep & thermo\\
-applmech & cimb & encyclopedia & hospitals & kidneydial & neuroglia & quaternary & tomography\\
-applmicrobiol & civileng & endocrines & humanities & kinasesphosphatases & neurolint & qubs & tourismhosp\\
-applnano & cleantechnol & energies & humans & knowledge & neurosci & radiation & toxics\\
-applsci & climate & eng & hydrobiology & land & nitrogen & reactions & toxins\\
-\addlinespace
-aquacj & clinpract & engproc & hydrogen & languages & notspecified & receptors & transplantology\\
-architecture & clockssleep & entomology & hydrology & laws & nri & recycling & transportation\\
-arm & cmd & entropy & hygiene & life & nursrep & regeneration & traumacare\\
-arthropoda & coasts & environments & idr & liquids & nutraceuticals & religions & traumas\\
-arts & coatings & environsciproc & ijerph & literature & nutrients & remotesensing & tropicalmed\\
-\addlinespace
-asc & colloids & epidemiologia & ijfs & livers & obesities & reports & universe\\
-asi & colorants & epigenomes & ijgi & logics & oceans & reprodmed & urbansci\\
-astronomy & commodities & est & ijms & logistics & ohbm & resources & uro\\
-atmosphere & compounds & fermentation & ijns & lubricants & onco & rheumato & vaccines\\
-atoms & computation & fibers & ijpb & lymphatics & oncopathology & risks & vehicles\\
-\addlinespace
-audiolres & computers & fintech & ijtm & machines & optics & robotics & venereology\\
-automation & condensedmatter & fire & ijtpp & macromol & oral & ruminants & vetsci\\
-axioms & conservation & fishes & ime & magnetism & organics & safety & vibration\\
-bacteria & constrmater & fluids & immuno & magnetochemistry & organoids & sci & virtualworlds\\
-batteries & cosmetics & foods & informatics & make & osteology & scipharm & viruses\\
-\addlinespace
-bdcc & covid & forecasting & information & marinedrugs & oxygen & sclerosis & vision\\
-behavsci & crops & forensicsci & infrastructures & materials & parasites & seeds & waste\\
-beverages & cryptography & forests & inorganics & materproc & parasitologia & sensors & water\\
-biochem & crystals & foundations & insects & mathematics & particles & separations & wem\\
-bioengineering & csmf & fractalfract & instruments & mca & pathogens & sexes & wevj\\
-\addlinespace
-biologics & ctn & fuels & inventions & measurements & pathophysiology & signals & wind\\
-biology & curroncol & future & iot & medicina & pediatrrep & sinusitis & women\\
-biomass & cyber & futureinternet & j & medicines & pharmaceuticals & skins & world\\
-biomechanics & dairy & futurepharmacol & jal & medsci & pharmaceutics & smartcities & youth\\
-biomed & data & futurephys & jcdd & membranes & pharmacoepidemiology & sna & zoonoticdis\\
-\addlinespace
-biomedicines & ddc & futuretransp & jcm & merits & pharmacy & societies & \\
-\bottomrule
-\end{longtable}
-\finishlandscape
-
-\section{Introduction}\label{introduction}
-
-The introduction should briefly place the study in a broad context and
-highlight why it is important. It should define the purpose of the work
-and its significance. The current state of the research field should be
-reviewed carefully and key publications cited. Please highlight
-controversial and diverging hypotheses when necessary. Finally, briefly
-mention the main aim of the work and highlight the principal
-conclusions. As far as possible, please keep the introduction
-comprehensible to scientists outside your particular field of research.
-Citing a journal paper
-\citep{bertrand-krajewski_distribution_1998, leutnant_stormwater_2016}.
-And now citing a book reference \citet{gujer_systems_2008}. Some MDPI
-journals use Chicago and others use APA, this template should choose the
-correct citation format for you once you specify the journal in the YAML
-header.
-
-To use endnotes, change \texttt{endnotes:\ true} in the YAML header,
-then use \texttt{\textbackslash{}endnote\{This\ is\ an\ endnote.\}}.
-
-\section{Materials and Methods}\label{materials-and-methods}
-
-Materials and Methods should be described with sufficient details to
-allow others to replicate and build on published results. Please note
-that publication of your manuscript implicates that you must make all
-materials, data, computer code, and protocols associated with the
-publication available to readers. Please disclose at the submission
-stage any restrictions on the availability of materials or information.
-New methods and protocols should be described in detail while
-well-established methods can be briefly described and appropriately
-cited.
-
-Research manuscripts reporting large datasets that are deposited in a
-publicly available database should specify where the data have been
-deposited and provide the relevant accession numbers. If the accession
-numbers have not yet been obtained at the time of submission, please
-state that they will be provided during review. They must be provided
-prior to publication.
-
-Interventionary studies involving animals or humans, and other studies
-require ethical approval must list the authority that provided approval
-and the corresponding ethical approval code.
-
-\section{Results}\label{results}
-
-This section may be divided by subheadings. It should provide a concise
-and precise description of the experimental results, their
-interpretation as well as the experimental conclusions that can be
-drawn.
-
-\subsection{Subsection Heading Here}\label{subsection-heading-here}
-
-Subsection text here.
-
-\subsubsection{Subsubsection Heading
-Here}\label{subsubsection-heading-here}
-
-Bulleted lists look like this:
+\subsection{Importación y verificación
+inicial}\label{importaciuxf3n-y-verificaciuxf3n-inicial}
 
 \begin{itemize}
 \tightlist
 \item
-  First bullet
-\item
-  Second bullet
-\item
-  Third bullet
+  \textbf{Codificación e importación}: Se verifica la codificación y se
+  importa el archivo CSV delimitado por tabulaciones, se indica que el
+  separador decimal es la coma y que los valores \emph{NA} están
+  codificados como \texttt{".."}
 \end{itemize}
 
-Numbered lists can be added as follows:
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   encoding   confidence
+##   <chr>           <dbl>
+## 1 UTF-8            1   
+## 2 ISO-8859-1       0.98
+## 3 ISO-8859-2       0.28
+\end{verbatim}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
+\begin{verbatim}
+## Rows: 4446 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: "\t"
+## chr (3): Sexo, Edad, Relación con la actividad económica
+## dbl (1): Periodo
+## num (1): Total
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 6 x 5
+##   Sexo        Edad  `Relación con la actividad económica` Periodo  Total
+##   <chr>       <chr> <chr>                                   <dbl>  <dbl>
+## 1 Ambos sexos Total Total                                    2024 41566.
+## 2 Ambos sexos Total Total                                    2023 40983.
+## 3 Ambos sexos Total Total                                    2022 40367.
+## 4 Ambos sexos Total Total                                    2021 39926.
+## 5 Ambos sexos Total Total                                    2020 39579.
+## 6 Ambos sexos Total Total                                    2019 39269.
+\end{verbatim}
+
+Se comprueba la estructura inicial de los datos
+
+\begin{verbatim}
+## spc_tbl_ [4,446 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ Sexo                               : chr [1:4446] "Ambos sexos" "Ambos sexos" "Ambos sexos" "Ambos sexos" ...
+##  $ Edad                               : chr [1:4446] "Total" "Total" "Total" "Total" ...
+##  $ Relación con la actividad económica: chr [1:4446] "Total" "Total" "Total" "Total" ...
+##  $ Periodo                            : num [1:4446] 2024 2023 2022 2021 2020 ...
+##  $ Total                              : num [1:4446] 41566 40983 40367 39926 39579 ...
+##  - attr(*, "spec")=
+##   .. cols(
+##   ..   Sexo = col_character(),
+##   ..   Edad = col_character(),
+##   ..   `Relación con la actividad económica` = col_character(),
+##   ..   Periodo = col_double(),
+##   ..   Total = col_number()
+##   .. )
+##  - attr(*, "problems")=<externalptr>
+\end{verbatim}
+
+\subsection{Valores faltantes}\label{valores-faltantes}
+
+Con el objetivo de ver la cantidad de los datos faltantes la variable
+que tiene estos datos se utiliza la siguiente función:
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-7-1.pdf}}
+
+\begin{verbatim}
+##                                Sexo                                Edad 
+##                                   0                                   0 
+## Relación con la actividad económica                             Periodo 
+##                                   0                                   0 
+##                               Total 
+##                                 111
+\end{verbatim}
+
+Todos los valores ausentes se encuentran en \texttt{Total}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-9-1.pdf}}
+
+Se observa que los valores faltantes vienen asociados a grupos de edad
+altos y cuya relación con la actividad económica es ``Parados que buscan
+primer empleo'' o ``Parados''.
+
+\section{Definición de variables}\label{definiciuxf3n-de-variables}
+
+El valor de la columna \textbf{Total} viene definido con la siguiente
+expresión:
+
+\[\text{Total}=\text{Activos}+\text{Inactivos}\] Y los \textbf{Activos}
+se dividen en Ocupados y Parados:
+
+\[\text{Activos}=\text{Ocupados}+\text{Parados}\] \#\# Fórmulas para el
+análisis (Tasas)
+
+Las tasas permiten normalizar los datos y son la base para el análisis
+de brechas y series temporales:
+
+La \textbf{tasa de paro} mide la proporción de la población activa que
+está desempleada:
+
+\[\text{Tasa de paro}=\frac{\text{Parados}}{\text{Activos}} \cdot 100\]
+
+La \textbf{tasa de actividad} mide la participación de una población en
+el mercado laboral:
+
+\[\text{Tasa de actividad}=\frac{\text{Activos}}{\text{Total}} \cdot 100\]
+La \textbf{tasa de ocupación} muestra qué parte de la población total de
+referencia tiene un empleo:
+
+\[\text{Tasa de ocupación}=\frac{\text{Ocupados}}{\text{Total}} \cdot 100\]
+
+\section{Limpieza}\label{limpieza}
+
+\begin{itemize}
 \item
-  First item
+  \textbf{Renombrar columnas}: Utilizando \texttt{rename()} para acortar
+  \texttt{"Relación\ con\ la\ actividad\ económica"} por
+  \texttt{"Situacion\_Laboral"} para simplificar el manejo de columnas.
 \item
-  Second item
+  \textbf{Filtrado de doble conteo}: Se eliminan las instancias donde
+  las variables representan la suma de otras instancias
+  (\texttt{Sexo="Ambos\ sexos"} y \texttt{Edad="Total"}) para evitar
+  doble conteo y así verificar que cada registro sea una observación
+  única.
 \item
-  Third item
-\end{enumerate}
+  \textbf{Se aplica \texttt{pivot\_wider()}} utilizando los valores de
+  la columna \texttt{Situacion\_Laboral} para crear las nuevas columnas
+  (\texttt{names\_from}) y los valores numéricos de la columna
+  \texttt{Total}.
+\item
+  \textbf{Renombrar variables}: Se renombra la columna
+  \texttt{"parados\ que\ buscan\ primer\ empleo"} a un formato más corto
+  Parados\_sin\_exp
+\item
+  \textbf{Imputación de NA a 0}: Los valores faltantes se concentran en
+  categorías como Personas mayores de 65 en paro o que buscan su primer
+  empleo. El INE suprime el dato por ser un valor insignificante, por lo
+  que se opta por remplazar los valores nulos a 0 para no perder el
+  resto de información válida de la instancia.
+\item
+  \textbf{Creación de tasas}: Se añaden las columnas
+  \texttt{Tasa\_paro}, \texttt{Tasa\_actividad} y
+  \texttt{Tasa\_ocupacion} utilizando \texttt{mutate()} y las
+  expresiones de la EPA.
+\item
+  \textbf{Ordenación en factores}: Se ordena la columna \texttt{Edad}
+  como un factor ordinal y la columna \texttt{Sexo} como factor nominal.
+\end{itemize}
 
-The text continues here.
+Se comprueba que la limpieza esté bien hecha, primero viendo si el
+formato de los datos es el adecuado y asegurando que no quedan valores
+faltantes.
 
-\subsection{Figures, Tables and
-Schemes}\label{figures-tables-and-schemes}
+\begin{verbatim}
+## tibble [456 x 12] (S3: tbl_df/tbl/data.frame)
+##  $ Sexo           : Factor w/ 2 levels "Hombres","Mujeres": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Edad           : Ord.factor w/ 12 levels "16-19"<"20-24"<..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Periodo        : num [1:456] 2024 2023 2022 2021 2020 ...
+##  $ Total          : num [1:456] 1095 1046 1019 984 992 ...
+##  $ Activos        : num [1:456] 189 167 161 144 142 ...
+##  $ Ocupados       : num [1:456] 117.2 94.7 88.1 72.4 71 ...
+##  $ Parados        : num [1:456] 71.6 72.4 73.1 71.4 71.3 67.5 75.2 82.5 81.1 95.1 ...
+##  $ Parados_sin_exp: num [1:456] 42.7 43.8 44.3 46.6 39 42.2 49 54.2 52.8 69.8 ...
+##  $ Inactivos      : num [1:456] 906 879 857 840 850 ...
+##  $ Tasa_paro      : num [1:456] 37.9 43.3 45.3 49.7 50.1 ...
+##  $ Tasa_actividad : num [1:456] 17.2 16 15.8 14.6 14.4 ...
+##  $ Tasa_ocupacion : num [1:456] 10.7 9.05 8.65 7.36 7.16 ...
+\end{verbatim}
 
-All figures and tables should be cited in the main text as Figure
-\ref{fig:fig1}, \ref{tab:tab1}, etc. To get cross-reference to figure
-generated by R chunks include the
-\texttt{\textbackslash{}\textbackslash{}label\{\}} tag in the
-\texttt{fig.cap} attribute of the R chunk:
-\texttt{fig.cap\ =\ "Fancy\ Caption\textbackslash{}\textbackslash{}label\{fig:plot\}"}.
+\begin{verbatim}
+##            Sexo            Edad         Periodo           Total         Activos 
+##               0               0               0               0               0 
+##        Ocupados         Parados Parados_sin_exp       Inactivos       Tasa_paro 
+##               0               0               0               0               0 
+##  Tasa_actividad  Tasa_ocupacion 
+##               0               0
+\end{verbatim}
 
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={A figure added with a code chunk.}]{ProyectoAED_files/figure-latex/fig1-1.pdf}}
-\caption{A figure added with a code chunk.\label{fig:fig1}}
-\end{figure}
+\section{Evolución temporal de las tasas con la
+brecha}\label{evoluciuxf3n-temporal-de-las-tasas-con-la-brecha}
 
-When making tables using \texttt{kable}, it is suggested to use the
-\texttt{format="latex"} and \texttt{tabl.envir="table"} arguments to
-ensure table numbering and compatibility with the mdpi document class.
+\#\#Evolucion de la tasa de paro por género y evolución de la brecha de
+la tasa de paro por género
 
-\begin{table}[H]
+En este bloque de código se construyen varias representaciones gráficas
+con el fin de analizar la evolución de la tasa de paro y la brecha de
+género a lo largo del tiempo. Para ello, se parte de una tabla en la que
+se calcula la variable \emph{brecha\_paro}, definida como la diferencia
+entre la tasa de paro de mujeres y la de hombres. Posteriormente, los
+datos se agrupan por periodo para obtener las tasas medias anuales de
+paro por sexo y la brecha media correspondiente. IMPORTAMOS EL ARCHIVO
+CSV
 
-\caption{\label{tab:tab1}This is a table caption. Tables should be placed in the 
-             main text near to the first time they are~cited.}
-\begin{tabular}[t]{lccc}
-\toprule
-  & mpg & cyl & disp\\
-\midrule
-Mazda RX4 & 21.0 & 6 & 160\\
-Mazda RX4 Wag & 21.0 & 6 & 160\\
-Datsun 710 & 22.8 & 4 & 108\\
-Hornet 4 Drive & 21.4 & 6 & 258\\
-Hornet Sportabout & 18.7 & 8 & 360\\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{df\_clean }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/df\_clean.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-For a very wide table, landscape layouts are allowed.
+\begin{verbatim}
+## Rows: 456 Columns: 12
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (2): Sexo, Edad
+## dbl (10): Periodo, Total, Activos, Ocupados, Parados, Parados_sin_exp, Inact...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
 
-\startlandscape
+Aggrupación de datos por periodo y por sexo
 
-\begin{table}[H]
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculamos la media de la tasa de actividad para cada grupo}
+\CommentTok{\# Usamos na.rm = TRUE para ignorar valores faltantes}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
 
-\caption{\label{tab:tab2}This is a very wide table}
-\begin{tabular}[t]{cccc}
-\toprule
-Title.1 & Title.2 & Title.3 & Title.4\\
-\midrule
-Entry 1 & Data & Data & This cell has some longer content that runs over
-                               two lines\\
-Entry 2 & Data & Data & Data\\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v lubridate 1.9.4     v tibble    3.3.0
+## v purrr     1.1.0     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
 
-\finishlandscape
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_p\_sexo }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Periodo, Sexo) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{tasa\_actividad =} \FunctionTok{mean}\NormalTok{(Tasa\_actividad, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\CommentTok{\#Hay que ignorar los valores NA}
+\NormalTok{                                                                , }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\CommentTok{\#hay que eliminar esas agrupaciones }
 
-\subsection{Formatting of Mathematical
-Components}\label{formatting-of-mathematical-components}
+\CommentTok{\#Que pretendemos? Calcular la media de la tasa de actividad de todos los grupos del df}
+\end{Highlighting}
+\end{Shaded}
 
-This is an example of an equation:
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gráfica }
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(df\_p\_sexo, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ tasa\_actividad, }\AttributeTok{color =}\NormalTok{ Sexo)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Tasa de actividad según sexo (2006–2024)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Año"}\NormalTok{, }\AttributeTok{y =} \StringTok{"\% Tasa de actividad"}\NormalTok{,}\AttributeTok{color =} \StringTok{"Sexo"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()  }
+\end{Highlighting}
+\end{Shaded}
 
-\[
-a = 1.
-\]
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-16-1.pdf}}
 
-If you want numbered equations use Latex and wrap in the equation
-environment:
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Eje X:Periodo {-}  Eje Y: tasa de actividad promedio}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{equation}
-a = 1,
-\end{equation}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La gráfica enseña la evolución de la tasa de actividad en España entre los años 2006 y 2024, diferenciada por sexo. Por un lado, la proporción de hombres es mucho mayor a la de mujeres, cosa que va ligada a que los hombres siempre han tenido mayor participicaion en muchos mas sectores, como lo puede ser la construcción, y a que las mujeres se ligan mas al cuidado familiar.}
+\StringTok{    Pese a esto, la actividad masculina en 2008 se desacelera economicamnete, esto provocado por la crisis financiera que se vivió en la epoca. Es en 2017/18 que comienza su recuperación, pero nunca a los niveles previos a la crisis. En 2020, debido al Covid{-}19, se observa otra caida en la tendencía (porque el Covid{-}19 afectó a muchos sectores, como la industría por ejemplo). Aunque se observa también su recuperació, tampoco volvió a los nieveles previos de la crisis de 2008}
+\StringTok{    por el otro lado, la tasa de actividad femenina se muestra, en el periodo, ascendente ya que han ido incorporandose cada vez mas en el mercado laboral español.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-the text following an equation need not be a new paragraph. Please
-punctuate equations as regular text.
+\begin{verbatim}
+## La gráfica enseña la evolución de la tasa de actividad en España entre los años 2006 y 2024, diferenciada por sexo. Por un lado, la proporción de hombres es mucho mayor a la de mujeres, cosa que va ligada a que los hombres siempre han tenido mayor participicaion en muchos mas sectores, como lo puede ser la construcción, y a que las mujeres se ligan mas al cuidado familiar.
+##     Pese a esto, la actividad masculina en 2008 se desacelera economicamnete, esto provocado por la crisis financiera que se vivió en la epoca. Es en 2017/18 que comienza su recuperación, pero nunca a los niveles previos a la crisis. En 2020, debido al Covid-19, se observa otra caida en la tendencía (porque el Covid-19 afectó a muchos sectores, como la industría por ejemplo). Aunque se observa también su recuperació, tampoco volvió a los nieveles previos de la crisis de 2008
+##     por el otro lado, la tasa de actividad femenina se muestra, en el periodo, ascendente ya que han ido incorporandose cada vez mas en el mercado laboral español.
+\end{verbatim}
 
-This is the example 2 of equation:
+Tasa de actividad por edad y sexo
 
-\begin{adjustwidth}{-\extralength}{0cm}
-\begin{equation}
-a = b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + 
-u + v + w + x + y + z
-\end{equation}
-\end{adjustwidth}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Agrupamos por Periodo, sexo y Edad}
 
-Theorem-type environments (including propositions, lemmas, corollaries
-etc.) can be formatted as follows:
+\DocumentationTok{\#\#Que pretendemos? Calcular la media de la tasa de actividad para cada combinación}
+\NormalTok{df\_sexo\_edad }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Periodo, Sexo, Edad) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{tasa\_actividad =} \FunctionTok{mean}\NormalTok{(Tasa\_actividad, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Example of a theorem:
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_sexo\_edad, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ tasa\_actividad, }\AttributeTok{color =}\NormalTok{ Edad)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Sexo) }\SpecialCharTok{+} \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2006}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{+} \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+}  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Tasa de actividad por edad y sexo (2006–2024)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Año"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Tasa de actividad (\%)"}\NormalTok{, }\AttributeTok{color =} \StringTok{"Edad"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()  }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{, }\AttributeTok{size =} \DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{Theorem}
-Example text of a theorem
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-19-1.pdf}}
 
-\end{Theorem}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_mujeres }\OtherTok{\textless{}{-}}\NormalTok{ df\_sexo\_edad }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Sexo }\SpecialCharTok{==} \StringTok{"Mujeres"}\NormalTok{)}
 
-The text continues here. Proofs must be formatted as follows:
+\FunctionTok{ggplot}\NormalTok{(df\_mujeres, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ tasa\_actividad, }\AttributeTok{color =}\NormalTok{ Edad)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2006}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Tasa de actividad por edad – Mujeres (2006–2024)"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Tasa de actividad (\%)"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"Edad"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{, }\AttributeTok{size =} \DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
-Example of a proof:
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-20-1.pdf}}
 
-\begin{proof}[Proof of Theorem1]
-Text of the proof. Note that the phrase ``of Theorem 1'\,' is optional
-if it is clear which theorem is being referred to.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_hombres }\OtherTok{\textless{}{-}}\NormalTok{ df\_sexo\_edad }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Sexo }\SpecialCharTok{==} \StringTok{"Hombres"}\NormalTok{)}
 
-\end{proof}
+\FunctionTok{ggplot}\NormalTok{(df\_hombres, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ tasa\_actividad, }\AttributeTok{color =}\NormalTok{ Edad)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2006}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{comma) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Tasa de actividad por edad – Hombres (2006–2024)"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Tasa de actividad (\%)"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"Edad"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{, }\AttributeTok{size =} \DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
-The text continues here.
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-21-1.pdf}}
 
-\section{Discussion}\label{discussion}
+TASA DE PARO POR SEXO
 
-Authors should discuss the results and how they can be interpreted in
-perspective of previous studies and of the working hypotheses. The
-findings and their implications should be discussed in the broadest
-context possible. Future research directions may also be highlighted.
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_paro\_sexo }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Periodo, Sexo) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{tasa\_paro =} \FunctionTok{mean}\NormalTok{(Tasa\_paro, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
 
-\section{Conclusion}\label{conclusion}
+\FunctionTok{ggplot}\NormalTok{(df\_paro\_sexo, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ tasa\_paro, }\AttributeTok{color =}\NormalTok{ Sexo)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{size=}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2006}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{))}\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Tasa de paro por sexo (2006–2024)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Año"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Tasa de paro (\%)"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
 
-This section is not mandatory, but can be added to the manuscript if the
-discussion is unusually long or complex.
+\begin{verbatim}
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## i Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
 
-\section{Patents}\label{patents}
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-22-1.pdf}}
 
-This section is not mandatory, but may be added if there are patents
-resulting from the work reported in this manuscript.
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# 1º crear una tabla con la variable brecha\_paro }
+\NormalTok{brecha }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Periodo, Edad,Sexo,Tasa\_paro) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Sexo, }\AttributeTok{values\_from =}\NormalTok{ Tasa\_paro) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{brecha\_paro=}\NormalTok{Mujeres}\SpecialCharTok{{-}}\NormalTok{Hombres)}
+\NormalTok{brecha}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 228 x 5
+##    Periodo Edad  Hombres Mujeres brecha_paro
+##      <dbl> <chr>   <dbl>   <dbl>       <dbl>
+##  1    2024 16-19    37.9    44.4      6.43  
+##  2    2023 16-19    43.3    42.8     -0.493 
+##  3    2022 16-19    45.3    44.4     -0.912 
+##  4    2021 16-19    49.7    52.3      2.69  
+##  5    2020 16-19    50.1    61.0     10.9   
+##  6    2019 16-19    42.8    48.4      5.59  
+##  7    2018 16-19    49.7    49.7      0.0375
+##  8    2017 16-19    54.2    55.1      0.919 
+##  9    2016 16-19    58.9    61.6      2.74  
+## 10    2015 16-19    64.7    70.7      6.04  
+## # i 218 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#2º Agrupar esas fechas por periodo, para asi no diferenciar entre grupos de edades y tener la brecha total}
+\NormalTok{brechas\_total }\OtherTok{\textless{}{-}}\NormalTok{ brecha }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Periodo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{tasa\_hombres =} \FunctionTok{mean}\NormalTok{(Hombres, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{tasa\_mujeres =} \FunctionTok{mean}\NormalTok{(Mujeres, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{brecha\_paro\_total =} \FunctionTok{mean}\NormalTok{(brecha\_paro, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{brechas\_total}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 19 x 4
+##    Periodo tasa_hombres tasa_mujeres brecha_paro_total
+##      <dbl>        <dbl>        <dbl>             <dbl>
+##  1    2006         6.66         11.0            4.38  
+##  2    2007         6.72         10.8            4.06  
+##  3    2008        10.3          13.2            2.90  
+##  4    2009        17.7          18.0            0.310 
+##  5    2010        20.1          19.9           -0.135 
+##  6    2011        21.6          21.6           -0.0770
+##  7    2012        25.2          25.3            0.0984
+##  8    2013        26.6          27.3            0.704 
+##  9    2014        24.7          26.2            1.45  
+## 10    2015        22.5          24.4            1.91  
+## 11    2016        20.1          22.6            2.47  
+## 12    2017        17.7          19.9            2.22  
+## 13    2018        15.8          17.9            2.13  
+## 14    2019        14.2          17.3            3.04  
+## 15    2020        16.1          19.7            3.55  
+## 16    2021        15.7          18.4            2.73  
+## 17    2022        13.7          16.2            2.52  
+## 18    2023        12.9          15.5            2.52  
+## 19    2024        11.9          14.6            2.69
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evo\_brecha\_total }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(brechas\_total,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Periodo,}\AttributeTok{y=}\NormalTok{brecha\_paro\_total)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}\SpecialCharTok{+}\FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}\FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la brecha de paro total"}\NormalTok{,}\AttributeTok{x=}\StringTok{"años"}\NormalTok{,}\AttributeTok{y=}\StringTok{"Brecha de tasa de paro"}\NormalTok{)}
+\NormalTok{evo\_brecha\_total}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-23-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evo\_tasa\_total }\OtherTok{\textless{}{-}}  \FunctionTok{ggplot}\NormalTok{(brechas\_total, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo)) }\SpecialCharTok{+}\FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_hombres, }\AttributeTok{color =} \StringTok{"Hombres"}\NormalTok{)) }\SpecialCharTok{+}\FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_hombres, }\AttributeTok{color =} \StringTok{"Hombres"}\NormalTok{)) }\SpecialCharTok{+}\FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_mujeres, }\AttributeTok{color =} \StringTok{"Mujeres"}\NormalTok{)) }\SpecialCharTok{+}\FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_mujeres, }\AttributeTok{color =} \StringTok{"Mujeres"}\NormalTok{)) }\SpecialCharTok{+}\FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la tasa de paro total por sexo"}\NormalTok{,}\AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Tasa de paro (\%)"}\NormalTok{,}\AttributeTok{color =} \StringTok{"Sexo"}\NormalTok{)}
+\NormalTok{evo\_tasa\_total}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-23-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{evo\_tasa\_y\_brecha}\OtherTok{\textless{}{-}}\FunctionTok{ggplot}\NormalTok{(brechas\_total, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo)) }\SpecialCharTok{+}\FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_hombres, }\AttributeTok{color =} \StringTok{"Hombres"}\NormalTok{), }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}\FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_hombres, }\AttributeTok{color =} \StringTok{"Hombres"}\NormalTok{), }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_mujeres, }\AttributeTok{color =} \StringTok{"Mujeres"}\NormalTok{), }\AttributeTok{size =} \FloatTok{1.3}\NormalTok{) }\SpecialCharTok{+}\FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ tasa\_mujeres, }\AttributeTok{color =} \StringTok{"Mujeres"}\NormalTok{), }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ brecha\_paro\_total, }\AttributeTok{color =} \StringTok{"Brecha"}\NormalTok{), }\AttributeTok{size =} \FloatTok{1.2}\NormalTok{,) }\SpecialCharTok{+}\FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ brecha\_paro\_total, }\AttributeTok{color =} \StringTok{"Brecha"}\NormalTok{), }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la tasa de paro total por sexo y brecha"}\NormalTok{,}\AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Tasa de paro (\%)"}\NormalTok{,) }\SpecialCharTok{+}\FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Hombres"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"Mujeres"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Brecha"} \OtherTok{=} \StringTok{"black"}\NormalTok{))}\SpecialCharTok{+}\FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{evo\_tasa\_y\_brecha}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-23-3.pdf}}
+El primer gráfico (\texttt{evo\_brecha\_total}) representa la evolución
+de la brecha de paro total tanto con lineas como con puntos para mostrar
+la tendencia y los valores anuales. En él se observa cómo la diferencia
+entre hombres y mujeres en la tasa de paro varía a lo largo del tiempo,
+con un aumento notable en los años posteriores a la crisis de 2008 y una
+ligera reducción en la última etapa analizada. Por su parte, el segundo
+gráfico (\texttt{evo\_tasa\_total}) muestra la evolución de la tasa de
+paro de hombres y mujeres de forma independiente, utilizando colores
+diferenciados para cada grupo. Esta visualización permite comparar
+directamente la evolución de ambos sexos, destacando la persistencia de
+una mayor tasa de paro entre las mujeres en prácticamente todos los años
+del periodo estudiado.
+
+Por último, el tercer gráfico (\texttt{evo\_tasa\_y\_brecha}) combina
+ambas perspectivas en una única figura. Se incluyen las líneas de
+hombres, mujeres y brecha, diferenciadas mediante colores específicos
+definidos con \texttt{scale\_color\_manual()}. Este enfoque conjunto
+facilita observar la relación entre las dos tasas y su diferencia a lo
+largo del tiempo, ofreciendo una visión global de la evolución de las
+desigualdades de género en el desempleo. En conjunto, el código y las
+representaciones resultantes permiten analizar de forma visual y
+comparativa la magnitud y la persistencia de la brecha de género en el
+mercado laboral español.
+
+\subsection{Evolucion de la tasa de paro y su brecha por grupo de
+edad}\label{evolucion-de-la-tasa-de-paro-y-su-brecha-por-grupo-de-edad}
+
+En este bloque de código se elaboran una serie de gráficos exploratorios
+con el objetivo de analizar la evolución de la brecha de paro entre
+mujeres y hombres desagregada por grupos de edad. A partir del conjunto
+de datos principal, se construye una tabla denominada brecha\_edades que
+contiene la tasa de paro por sexo y edad, y se calcula la variable
+brecha\_paro como la diferencia entre las tasas de mujeres y hombres.
+Posteriormente, los grupos de edad se clasifican en intervalos de diez
+años, y los datos se dividen en distintos subconjuntos (df\_1, df\_2,
+df\_3) para facilitar la representación y mejorar la legibilidad de los
+gráficos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brecha\_edades }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Sexo, Edad, Periodo,Tasa\_paro) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Sexo, }\AttributeTok{values\_from =}\NormalTok{ Tasa\_paro) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{brecha\_paro=}\NormalTok{Mujeres}\SpecialCharTok{{-}}\NormalTok{Hombres)}
+\NormalTok{brecha\_edades}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 228 x 5
+##    Edad  Periodo Hombres Mujeres brecha_paro
+##    <chr>   <dbl>   <dbl>   <dbl>       <dbl>
+##  1 16-19    2024    37.9    44.4      6.43  
+##  2 16-19    2023    43.3    42.8     -0.493 
+##  3 16-19    2022    45.3    44.4     -0.912 
+##  4 16-19    2021    49.7    52.3      2.69  
+##  5 16-19    2020    50.1    61.0     10.9   
+##  6 16-19    2019    42.8    48.4      5.59  
+##  7 16-19    2018    49.7    49.7      0.0375
+##  8 16-19    2017    54.2    55.1      0.919 
+##  9 16-19    2016    58.9    61.6      2.74  
+## 10 16-19    2015    64.7    70.7      6.04  
+## # i 218 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{unique}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{Edad)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "16-19" "20-24" "25-29" "30-34" "35-39" "40-44" "45-49" "50-54" "55-59"
+## [10] "60-64" "65-69" "70+"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\CommentTok{\#Para hacerlo con un unico dataframe, es muy complejo de graficar, asi que es mejor dividirlo en varios dataframes, para que así sea mas sencillo trabajar}
+\NormalTok{edades\_1 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"16{-}19"}\NormalTok{, }\StringTok{"20{-}24"}\NormalTok{, }\StringTok{"25{-}29"}\NormalTok{, }\StringTok{"30{-}34"}\NormalTok{)}
+\NormalTok{edades\_2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"35{-}39"}\NormalTok{, }\StringTok{"40{-}44"}\NormalTok{, }\StringTok{"45{-}49"}\NormalTok{, }\StringTok{"50{-}54"}\NormalTok{)}
+\NormalTok{edades\_3 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"55{-}59"}\NormalTok{, }\StringTok{"60{-}64"}\NormalTok{, }\StringTok{"65{-}69"}\NormalTok{, }\StringTok{"70+"}\NormalTok{)}
+
+\NormalTok{df\_1 }\OtherTok{\textless{}{-}}\NormalTok{ brecha\_edades }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Edad }\SpecialCharTok{\%in\%}\NormalTok{ edades\_1)}
+\NormalTok{df\_2 }\OtherTok{\textless{}{-}}\NormalTok{ brecha\_edades }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Edad }\SpecialCharTok{\%in\%}\NormalTok{ edades\_2)}
+\NormalTok{df\_3 }\OtherTok{\textless{}{-}}\NormalTok{ brecha\_edades }\SpecialCharTok{\%\textgreater{}\%}  \FunctionTok{filter}\NormalTok{(Edad }\SpecialCharTok{\%in\%}\NormalTok{ edades\_3)}
+
+\FunctionTok{ggplot}\NormalTok{(df\_1, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ brecha\_paro)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{( }\AttributeTok{size =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Edad, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}  \CommentTok{\# ← cuadrícula 2×2}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la brecha de paro (Mujeres {-} Hombres)"}\NormalTok{,}\AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Brecha"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-24-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ brecha\_paro)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{( }\AttributeTok{size =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Edad, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la brecha de paro (Mujeres {-} Hombres)"}\NormalTok{,}\AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Brecha"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-24-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_3, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ brecha\_paro)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{( }\AttributeTok{size =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Edad, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la brecha de paro (Mujeres {-} Hombres)"}\NormalTok{,}\AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Brecha"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-24-3.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{colores\_vivos }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{"\#FF4B00"}\NormalTok{, }\StringTok{"\#00FFFF"}\NormalTok{, }\StringTok{"\#FFD300"}\NormalTok{, }\StringTok{"\#FF1493"}\NormalTok{,}
+  \StringTok{"\#00FF00"}\NormalTok{, }\StringTok{"\#1E90FF"}\NormalTok{, }\StringTok{"\#FF7F50"}\NormalTok{, }\StringTok{"\#ADFF2F"}\NormalTok{,}
+  \StringTok{"\#DA70D6"}\NormalTok{, }\StringTok{"\#FF4500"}\NormalTok{, }\StringTok{"\#00CED1"}\NormalTok{, }\StringTok{"\#FFFF66"}
+\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(brecha\_edades, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ brecha\_paro,}\AttributeTok{colour =}\NormalTok{ Edad)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{( }\AttributeTok{size =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()  }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la brecha de paro (Mujeres {-} Hombres)"}\NormalTok{,}\AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Brecha"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-24-4.pdf}}
+Los primeros gráficos utilizan facet\_wrap() para mostrar la evolución
+temporal de la brecha de paro dentro de cada grupo de edad. Cada panel
+representa un intervalo etario y permite observar cómo la diferencia
+entre hombres y mujeres ha variado a lo largo del tiempo. Estas
+visualizaciones, evidencian que la brecha no se comporta de manera
+homogénea entre generaciones: mientras que en los grupos más jóvenes las
+diferencias tienden a fluctuar con mayor intensidad, en los grupos
+intermedios y de mayor edad la brecha presenta una evolución más
+estable, aunque persiste una desigualdad estructural en la mayoría de
+los casos.
+
+Por último, se incluye una representación global en la que se superponen
+todas las series de edad en un mismo gráfico, utilizando una paleta de
+colores vivos definida manualmente. Este gráfico tiene un carácter
+eminentemente exploratorio y permite comparar visualmente la magnitud y
+la variabilidad de la brecha de paro entre cohortes. En conjunto, este
+bloque de código contribuye a profundizar en el análisis
+intergeneracional de la desigualdad laboral, revelando que las
+diferencias por género en el desempleo no afectan por igual a todos los
+grupos de edad y que ciertos tramos, especialmente los más jóvenes,
+muestran una mayor volatilidad a lo largo del tiempo.
+
+\subsection{Gráfica de Barras comparación grupos de edades con mayor
+brecha en 2006 y en
+2024}\label{gruxe1fica-de-barras-comparaciuxf3n-grupos-de-edades-con-mayor-brecha-en-2006-y-en-2024}
+
+En este bloque de código se elaboran una serie de gráficos exploratorios
+de barras destinados a analizar la evolución de la brecha de paro por
+grupos de edad a lo largo del tiempo. Para ello, a partir del conjunto
+brecha\_edades, que contiene la diferencia entre las tasas de paro
+femeninas y masculinas, se genera un conjunto de gráficos individuales
+por año mediante la función lapply(). En cada uno de ellos, las barras
+representan la magnitud de la brecha en los distintos grupos de edad,
+mientras que la línea discontinua negra indica la media general de la
+brecha para ese año. De esta forma, el código permite observar en
+paralelo la estructura intergeneracional de las desigualdades laborales
+y cómo varía la media de brecha entre periodos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a1}\OtherTok{\textless{}{-}}\NormalTok{ brecha\_edades }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(Periodo }\SpecialCharTok{\%in\%} \DecValTok{2024}\NormalTok{)}
+
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{rango\_y }\OtherTok{\textless{}{-}} \FunctionTok{range}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{brecha\_paro)}
+\NormalTok{años}\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(df\_clean}\SpecialCharTok{$}\NormalTok{Periodo)}
+
+
+\NormalTok{grafico\_brecha\_paro\_por\_año}\OtherTok{\textless{}{-}}\FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año)\{}
+\NormalTok{  brecha\_edades }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{filter}\NormalTok{(Periodo}\SpecialCharTok{==}\NormalTok{año) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{ggplot}\NormalTok{( }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ brecha\_paro)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+ \FunctionTok{ylim}\NormalTok{(rango\_y) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Brecha de paro por grupo de edad {-}"}\NormalTok{, año),}\AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Brecha "}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{,}\AttributeTok{hjust =} \DecValTok{1}\NormalTok{) )}\SpecialCharTok{+}
+    \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(brecha\_edades}\SpecialCharTok{$}\NormalTok{brecha\_paro[brecha\_edades}\SpecialCharTok{$}\NormalTok{Periodo }\SpecialCharTok{==}\NormalTok{ año]),}
+               \AttributeTok{color =} \StringTok{"grey10"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{) }
+\NormalTok{\})}
+
+\NormalTok{grafico\_brecha\_paro\_por\_año}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-1.pdf}}
+
+\begin{verbatim}
+## 
+## [[2]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-2.pdf}}
+
+\begin{verbatim}
+## 
+## [[3]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-3.pdf}}
+
+\begin{verbatim}
+## 
+## [[4]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-4.pdf}}
+
+\begin{verbatim}
+## 
+## [[5]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-5.pdf}}
+
+\begin{verbatim}
+## 
+## [[6]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-6.pdf}}
+
+\begin{verbatim}
+## 
+## [[7]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-7.pdf}}
+
+\begin{verbatim}
+## 
+## [[8]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-8.pdf}}
+
+\begin{verbatim}
+## 
+## [[9]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-9.pdf}}
+
+\begin{verbatim}
+## 
+## [[10]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-10.pdf}}
+
+\begin{verbatim}
+## 
+## [[11]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-11.pdf}}
+
+\begin{verbatim}
+## 
+## [[12]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-12.pdf}}
+
+\begin{verbatim}
+## 
+## [[13]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-13.pdf}}
+
+\begin{verbatim}
+## 
+## [[14]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-14.pdf}}
+
+\begin{verbatim}
+## 
+## [[15]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-15.pdf}}
+
+\begin{verbatim}
+## 
+## [[16]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-16.pdf}}
+
+\begin{verbatim}
+## 
+## [[17]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-17.pdf}}
+
+\begin{verbatim}
+## 
+## [[18]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-18.pdf}}
+
+\begin{verbatim}
+## 
+## [[19]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-25-19.pdf}}
+Los gráficos resultantes muestran, de forma clara y comparativa, cómo la
+intensidad de la brecha de género en el desempleo varía según la edad y
+el momento temporal. En los primeros años analizados, la brecha es
+especialmente elevada entre los jóvenes, lo que evidencia una mayor
+vulnerabilidad del empleo femenino en los primeros tramos de edad. En
+cambio, en los años más recientes para esos tramos de edad, las
+diferencias tienden a moderarse y presentan un patrón más equilibrado
+entre grupos, aunque persisten desigualdades estructurales en los
+segmentos intermedios y de mayor edad.
+
+En conjunto, este bloque busca ofrecer una visión desagregada y
+evolutiva de la brecha de paro por edad. Gracias a la representación
+mediante diagramas de barras, se facilita la comparación entre grupos
+generacionales y se identifican con claridad los grupos que más
+contribuyen a mantener las disparidades laborales entre hombres y
+mujeres a lo largo del tiempo.
+
+Estadisiticas
+
+\section{desv est y varianza}\label{desv-est-y-varianza}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Sexo) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{sd\_ocupados =} \FunctionTok{sd}\NormalTok{(Ocupados, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}\AttributeTok{var\_ocupados =} \FunctionTok{var}\NormalTok{(Ocupados, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 3
+##   Sexo    sd_ocupados var_ocupados
+##   <chr>         <dbl>        <dbl>
+## 1 Hombres        591.      349261.
+## 2 Mujeres        490.      240316.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Sexo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{media\_ocupados =} \FunctionTok{mean}\NormalTok{(Ocupados, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+            \AttributeTok{media\_inactivos =} \FunctionTok{mean}\NormalTok{(Inactivos, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{brecha\_ocup =} \FunctionTok{diff}\NormalTok{(media\_ocupados),}
+            \AttributeTok{brecha\_inact =} \FunctionTok{diff}\NormalTok{(media\_inactivos))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   brecha_ocup brecha_inact
+##         <dbl>        <dbl>
+## 1       -166.         247.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_brecha\_genero }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(Periodo, Sexo) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{tasa =} \FunctionTok{mean}\NormalTok{(Tasa\_actividad, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Sexo, }\AttributeTok{values\_from =}\NormalTok{ tasa) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Brecha =}\NormalTok{ Hombres }\SpecialCharTok{{-}}\NormalTok{ Mujeres)}
+
+\NormalTok{df\_brecha\_genero}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 19 x 4
+##    Periodo Hombres Mujeres Brecha
+##      <dbl>   <dbl>   <dbl>  <dbl>
+##  1    2006    66.1    48.2  17.9 
+##  2    2007    66.2    49.2  16.9 
+##  3    2008    66.4    50.7  15.6 
+##  4    2009    65.4    51.8  13.5 
+##  5    2010    64.9    52.7  12.2 
+##  6    2011    64.3    53.6  10.7 
+##  7    2012    64.1    54.3   9.72
+##  8    2013    63.8    54.6   9.13
+##  9    2014    63.5    54.7   8.83
+## 10    2015    63.8    55.1   8.71
+## 11    2016    63.7    55.4   8.29
+## 12    2017    63.8    55.4   8.43
+## 13    2018    64.0    55.5   8.50
+## 14    2019    64.1    56.0   8.09
+## 15    2020    62.9    55.0   7.93
+## 16    2021    64.0    56.9   7.03
+## 17    2022    64.7    57.3   7.33
+## 18    2023    65.0    58.3   6.78
+## 19    2024    65.5    58.5   7.01
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_brecha\_genero, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ Brecha)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Evolución de la brecha de género en la tasa de actividad"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Año"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Diferencia (Hombres {-} Mujeres)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-29-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_brecha\_genero, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ Brecha)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"loess"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{))}\SpecialCharTok{+} \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2006}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Interpolación de la brecha de género NO LINEAL"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Brecha (Hombres {-} Mujeres)"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-30-1.pdf}}
+
+hombres/mujeres
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brecha\_relativa }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Periodo, Sexo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Tasa =} \FunctionTok{mean}\NormalTok{(Tasa\_actividad, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Sexo, }\AttributeTok{values\_from =}\NormalTok{ Tasa) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Razon =}\NormalTok{ Hombres }\SpecialCharTok{/}\NormalTok{ Mujeres)}
+
+\NormalTok{brecha\_relativa}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 19 x 4
+##    Periodo Hombres Mujeres Razon
+##      <dbl>   <dbl>   <dbl> <dbl>
+##  1    2006    66.1    48.2  1.37
+##  2    2007    66.2    49.2  1.34
+##  3    2008    66.4    50.7  1.31
+##  4    2009    65.4    51.8  1.26
+##  5    2010    64.9    52.7  1.23
+##  6    2011    64.3    53.6  1.20
+##  7    2012    64.1    54.3  1.18
+##  8    2013    63.8    54.6  1.17
+##  9    2014    63.5    54.7  1.16
+## 10    2015    63.8    55.1  1.16
+## 11    2016    63.7    55.4  1.15
+## 12    2017    63.8    55.4  1.15
+## 13    2018    64.0    55.5  1.15
+## 14    2019    64.1    56.0  1.14
+## 15    2020    62.9    55.0  1.14
+## 16    2021    64.0    56.9  1.12
+## 17    2022    64.7    57.3  1.13
+## 18    2023    65.0    58.3  1.12
+## 19    2024    65.5    58.5  1.12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#j}
+\CommentTok{\#l}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(brecha\_relativa, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ Razon)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{linewidth =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \DecValTok{1}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray"}\NormalTok{) }\SpecialCharTok{+}  \CommentTok{\# línea de igualdad}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.05}\NormalTok{)) }\SpecialCharTok{+}  \CommentTok{\# marcas cada 0.05}
+  \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{2006}\NormalTok{, }\DecValTok{2024}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{)) }\SpecialCharTok{+}  \CommentTok{\# años cada 2}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Evolución de la razón Hombres/Mujeres"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Razón (Hombres / Mujeres)"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{),}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-32-1.pdf}}
+
+por edad
+
+\section{Distribución de la población en el mercado
+laboral}\label{distribuciuxf3n-de-la-poblaciuxf3n-en-el-mercado-laboral}
+
+\subsection{Composición del mercado
+laboral}\label{composiciuxf3n-del-mercado-laboral}
+
+En este bloque de código se genera un gráfico exploratorio con el
+propósito de comprobar la visualización de la composición del mercado
+laboral antes de automatizar el proceso para todos los años. Para ello,
+se filtran los datos del año 2024 y se seleccionan las variables
+relevantes relacionadas con el estado laboral (\emph{Activos, Ocupados,
+Parados e Inactivos}), junto con la edad y el sexo. Posteriormente,
+mediante la función \texttt{pivot\_longer()}, se reorganiza la tabla a
+formato largo, lo que permite representar las distintas categorías
+laborales como valores dentro de una misma variable (\emph{Estado}),
+facilitando así la creación de un gráfico apilado en \emph{ggplot2}.
+
+El gráfico resultante muestra la distribución proporcional de la
+población según su situación laboral y grupo de edad, diferenciando
+entre hombres y mujeres mediante
+\texttt{facet\_wrap(\textasciitilde{}Sexo)}. Se emplea
+\texttt{geom\_col(position\ =\ "fill")} para que las barras representen
+proporciones y no valores absolutos, y se aplican ajustes estéticos para
+mejorar la legibilidad, como la rotación de etiquetas del eje X y el uso
+de \texttt{theme\_minimal()}. Este gráfico sirvió como prueba inicial
+para evaluar la claridad y estructura de la visualización antes de
+desarrollar la función que posteriormente generó automáticamente el
+mismo tipo de gráfico para todos los años del periodo analizado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos\_composicion\_2024}\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(Periodo}\SpecialCharTok{==}\DecValTok{2024}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(Inactivos,Ocupados,Parados),}\AttributeTok{names\_to =} \StringTok{"Estado"}\NormalTok{,}\AttributeTok{values\_to =} \StringTok{"N\_Personas"}\NormalTok{)}
+  
+\NormalTok{datos\_composicion\_2024 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Edad, }\AttributeTok{y =}\NormalTok{ N\_Personas, }\AttributeTok{fill =}\NormalTok{ Estado)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Composición del mercado laboral por grupo de edad en 2024"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Proporción"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"Estado"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Sexo)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-33-1.pdf}}
+Tras la comprobación inicial con los datos de 2024, se elaboró este
+bloque de código para automatizar la generación del mismo tipo de
+gráfico para todos los años del conjunto de datos. Para ello, se utiliza
+la función \texttt{lapply()}, que aplica el mismo procedimiento de
+visualización a cada año contenido en la variable \texttt{años}. Dentro
+de la función, los datos se filtran por periodo y se representa la
+composición del mercado laboral mediante
+\texttt{geom\_col(position\ =\ "fill")}, mostrando la proporción de cada
+estado laboral (ocupados, parados e inactivos) dentro de cada grupo de
+edad.
+
+El código utiliza \texttt{facet\_wrap(\textasciitilde{}Sexo)} para
+mostrar en paneles separados la información correspondiente a hombres y
+mujeres. El título de cada gráfico se personaliza dinámicamente con el
+año correspondiente mediante \texttt{paste()}. Este procedimiento
+permitió obtener una serie de gráficos anuales, facilitando así el
+análisis comparativo de la evolución de la estructura del mercado
+laboral a lo largo del tiempo y entre sexos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos\_composicion}\OtherTok{\textless{}{-}}\NormalTok{ df\_clean  }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(Inactivos,Ocupados,Parados),}\AttributeTok{names\_to =} \StringTok{"Estado"}\NormalTok{,}\AttributeTok{values\_to =} \StringTok{"N\_Personas"}\NormalTok{)}
+
+\NormalTok{años}\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(datos\_composicion}\SpecialCharTok{$}\NormalTok{Periodo)}
+
+\NormalTok{graficos\_composicion\_por\_año }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año) \{}
+\NormalTok{  datos\_composicion }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(Periodo }\SpecialCharTok{==}\NormalTok{ año) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ N\_Personas, }\AttributeTok{fill =}\NormalTok{ Estado)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}
+      \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Composición del mercado laboral por grupo de edad {-}"}\NormalTok{, año),}
+      \AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}
+      \AttributeTok{y =} \StringTok{"Proporción"}\NormalTok{,}
+      \AttributeTok{fill =} \StringTok{"Estado"}
+\NormalTok{    ) }\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}\SpecialCharTok{+}
+    \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Sexo)}\CommentTok{\#Añadir o quitar según queramos comparar hombres y mujeres o no }
+\NormalTok{\})}
+
+\NormalTok{graficos\_composicion\_por\_año}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-1.pdf}}
+
+\begin{verbatim}
+## 
+## [[2]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-2.pdf}}
+
+\begin{verbatim}
+## 
+## [[3]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-3.pdf}}
+
+\begin{verbatim}
+## 
+## [[4]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-4.pdf}}
+
+\begin{verbatim}
+## 
+## [[5]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-5.pdf}}
+
+\begin{verbatim}
+## 
+## [[6]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-6.pdf}}
+
+\begin{verbatim}
+## 
+## [[7]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-7.pdf}}
+
+\begin{verbatim}
+## 
+## [[8]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-8.pdf}}
+
+\begin{verbatim}
+## 
+## [[9]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-9.pdf}}
+
+\begin{verbatim}
+## 
+## [[10]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-10.pdf}}
+
+\begin{verbatim}
+## 
+## [[11]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-11.pdf}}
+
+\begin{verbatim}
+## 
+## [[12]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-12.pdf}}
+
+\begin{verbatim}
+## 
+## [[13]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-13.pdf}}
+
+\begin{verbatim}
+## 
+## [[14]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-14.pdf}}
+
+\begin{verbatim}
+## 
+## [[15]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-15.pdf}}
+
+\begin{verbatim}
+## 
+## [[16]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-16.pdf}}
+
+\begin{verbatim}
+## 
+## [[17]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-17.pdf}}
+
+\begin{verbatim}
+## 
+## [[18]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-18.pdf}}
+
+\begin{verbatim}
+## 
+## [[19]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-34-19.pdf}}
+
+Del análisis de los gráficos se observa una estructura bastante estable
+del mercado laboral por edad y sexo a lo largo del tiempo, con ligeras
+variaciones asociadas a los ciclos económicos. En ambos sexos, el grupo
+central de edad (30-54 años) concentra la mayor proporción de personas
+ocupadas, mientras que los extremos ---jóvenes y mayores--- presentan
+una mayor presencia de inactivos. Las mujeres muestran sistemáticamente
+una menor proporción de ocupación y una mayor de inactividad en
+comparación con los hombres, aunque esta diferencia tiende a reducirse
+en los años más recientes. Asimismo, la proporción de personas paradas
+es más significativa en los grupos jóvenes, reflejando una mayor
+vulnerabilidad del empleo juvenil. En conjunto, los gráficos ponen de
+manifiesto que, pese a los avances en participación femenina y la
+estabilidad general del empleo en edades medias, persisten desigualdades
+de género e importantes diferencias intergeneracionales dentro del
+mercado laboral.
+
+\#\#Proporción de parados En este bloque de código se genera una serie
+de gráficos que representan la distribución del paro dentro de cada sexo
+por grupo de edad y año. Para ello, se utiliza una estructura, que
+permite crear automáticamente un gráfico por cada año disponible en el
+conjunto de datos. Primero, los datos se filtran por periodo y se
+agrupan por sexo y año, tras lo cual se calcula la proporción que
+representa cada grupo de edad dentro del total de personas paradas del
+mismo sexo (\texttt{Parados\ /\ sum(Parados)}).
+
+A continuación, se construyen los gráficos con ggplot2, empleando
+\texttt{geom\_col(position\ =\ "dodge")} para comparar visualmente la
+distribución entre hombres y mujeres dentro de cada grupo de edad. El
+objetivo de este análisis es observar cómo se reparte el desempleo
+dentro de cada sexo a lo largo del tiempo, identificando posibles
+diferencias estructurales entre hombres y mujeres en función de la edad.
+De esta manera, se obtiene una visión más detallada del peso relativo de
+cada grupo de edad en el total de personas paradas de cada sexo y su
+evolución temporal.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{graficos\_parados\_proporcion\_por\_año}\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(años, }\ControlFlowTok{function}\NormalTok{(año)\{}
+\NormalTok{df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Periodo}\SpecialCharTok{==}\NormalTok{año) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Sexo, Periodo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Proporcion\_parados\_en\_sexo =}\NormalTok{ Parados }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(Parados)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)), }\AttributeTok{y =}\NormalTok{ Proporcion\_parados\_en\_sexo, }\AttributeTok{fill =}\NormalTok{ Sexo)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Distribución del paro dentro de cada sexo {-}"}\NormalTok{,año),}
+    \AttributeTok{x =} \StringTok{"Grupo de edad"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Proporción del total de parados del mismo sexo"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"Sexo"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\NormalTok{\})}
+
+\NormalTok{graficos\_parados\_proporcion\_por\_año}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-1.pdf}}
+
+\begin{verbatim}
+## 
+## [[2]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-2.pdf}}
+
+\begin{verbatim}
+## 
+## [[3]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-3.pdf}}
+
+\begin{verbatim}
+## 
+## [[4]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-4.pdf}}
+
+\begin{verbatim}
+## 
+## [[5]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-5.pdf}}
+
+\begin{verbatim}
+## 
+## [[6]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-6.pdf}}
+
+\begin{verbatim}
+## 
+## [[7]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-7.pdf}}
+
+\begin{verbatim}
+## 
+## [[8]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-8.pdf}}
+
+\begin{verbatim}
+## 
+## [[9]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-9.pdf}}
+
+\begin{verbatim}
+## 
+## [[10]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-10.pdf}}
+
+\begin{verbatim}
+## 
+## [[11]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-11.pdf}}
+
+\begin{verbatim}
+## 
+## [[12]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-12.pdf}}
+
+\begin{verbatim}
+## 
+## [[13]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-13.pdf}}
+
+\begin{verbatim}
+## 
+## [[14]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-14.pdf}}
+
+\begin{verbatim}
+## 
+## [[15]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-15.pdf}}
+
+\begin{verbatim}
+## 
+## [[16]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-16.pdf}}
+
+\begin{verbatim}
+## 
+## [[17]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-17.pdf}}
+
+\begin{verbatim}
+## 
+## [[18]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-18.pdf}}
+
+\begin{verbatim}
+## 
+## [[19]]
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-35-19.pdf}}
+En estas gráficas se aprecia cómo la distribución del paro dentro de
+cada sexo ha cambiado en los últimos años, influida por transformaciones
+estructurales del mercado laboral y demográficas. La elevación
+progresiva de la edad de jubilación y el retraso en la salida definitiva
+del mercado laboral han provocado un aumento en la proporción de
+personas activas en edades más avanzadas, lo que se traduce también en
+una mayor representación del paro entre los grupos de 55 años o más.
+Esto indica que el desempleo ya no es un fenómeno concentrado
+exclusivamente en edades intermedias, sino que se extiende también hacia
+los trabajadores de mayor edad, quienes permanecen más tiempo en el
+mercado laboral. Por el contrario, los grupos más jóvenes (de 16 a 24
+años) han reducido su presencia relativa en el total de personas
+desempleadas, debido principalmente a una incorporación más tardía al
+mercado laboral como resultado del alargamiento de la etapa educativa y
+del aumento de la formación superior.
+
+En cuanto al análisis por género, se observa que la distribución del
+paro dentro de cada sexo mantiene ciertas similitudes, pero también
+muestra matices importantes. En los grupos de edad intermedia (25-54
+años), las mujeres tienden a concentrar una mayor proporción del
+desempleo dentro de su propio sexo, lo que refleja una persistente
+desigualdad estructural en el acceso y la estabilidad del empleo
+femenino, especialmente en etapas donde la conciliación familiar y
+laboral juega un papel determinante. Sin embargo, entre los hombres, el
+paro se distribuye de forma algo más homogénea entre los distintos
+grupos de edad, con un incremento más visible en las edades avanzadas,
+vinculado al impacto de los sectores más cíclicos (como la construcción
+o la industria) y a la dificultad de reinserción laboral tras la pérdida
+del empleo.
+
+En conjunto, estas gráficas ponen de manifiesto un proceso de
+envejecimiento del desempleo y una convergencia progresiva entre hombres
+y mujeres en la estructura interna del paro, aunque todavía persisten
+diferencias derivadas de los roles laborales y sociales tradicionales.
+Mientras los hombres mayores ganan peso dentro del paro total por el
+retraso en la jubilación, las mujeres siguen mostrando una mayor
+vulnerabilidad en las edades centrales, reflejando las desigualdades de
+género que aún caracterizan el mercado laboral español.
+
+\#Distribución de ocupados e inactivos por sexo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_ocup\_inact }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Sexo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Ocupados =} \FunctionTok{sum}\NormalTok{(Ocupados, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Inactivos =} \FunctionTok{sum}\NormalTok{(Inactivos, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(Ocupados, Inactivos), }\AttributeTok{names\_to =} \StringTok{"Situacion"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Personas"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df\_ocup\_inact, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sexo, }\AttributeTok{y =}\NormalTok{ Personas, }\AttributeTok{fill =}\NormalTok{ Situacion)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribución de ocupados e inactivos por sexo"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Sexo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Personas"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-37-1.pdf}}
+
+\#act inact
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_act\_inact }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Sexo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Activos =} \FunctionTok{sum}\NormalTok{(Activos, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Inactivos =} \FunctionTok{sum}\NormalTok{(Inactivos, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(Activos, Inactivos), }\AttributeTok{names\_to =} \StringTok{"Situacion"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"Personas"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(df\_act\_inact, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sexo, }\AttributeTok{y =}\NormalTok{ Personas, }\AttributeTok{fill =}\NormalTok{ Situacion)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Distribución de activos e inactivos por sexo"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Sexo"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Personas"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"Situación"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-38-1.pdf}}
+
+\#grafico violin
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Preparar los datos: convertir Edad a factor con orden lógico}
+\NormalTok{df\_clean }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Edad =} \FunctionTok{factor}\NormalTok{(Edad, }\AttributeTok{levels =} \FunctionTok{unique}\NormalTok{(Edad)))}
+
+\CommentTok{\# Crear gráfico de violín}
+\FunctionTok{ggplot}\NormalTok{(df\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Edad, }\AttributeTok{y =}\NormalTok{ Parados, }\AttributeTok{fill =}\NormalTok{ Sexo)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_violin}\NormalTok{(}\AttributeTok{trim =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{scale =} \StringTok{"width"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Distribución del paro por edad y sexo"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Rango de edad"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Número de parados"}\NormalTok{,}
+    \AttributeTok{fill =} \StringTok{"Sexo"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Hombres"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"Mujeres"} \OtherTok{=} \StringTok{"green"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-39-1.pdf}}
+
+\#feminizacion
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_feminizacion }\OtherTok{\textless{}{-}}\NormalTok{ df\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Periodo, Edad, Sexo) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Ocupados =} \FunctionTok{sum}\NormalTok{(Ocupados), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Sexo, }\AttributeTok{values\_from =}\NormalTok{ Ocupados) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Indice\_feminizacion =}\NormalTok{ Mujeres }\SpecialCharTok{/}\NormalTok{ (Hombres }\SpecialCharTok{+}\NormalTok{ Mujeres) }\SpecialCharTok{*} \DecValTok{100}\NormalTok{)}
+
+\NormalTok{df\_feminizacion}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 228 x 5
+##    Periodo Edad  Hombres Mujeres Indice_feminizacion
+##      <dbl> <fct>   <dbl>   <dbl>               <dbl>
+##  1    2006 16-19    244.    142.                36.8
+##  2    2006 20-24    928.    727.                43.9
+##  3    2006 25-29   1594.   1285.                44.6
+##  4    2006 30-34   1790.   1327.                42.6
+##  5    2006 35-39   1709.   1198.                41.2
+##  6    2006 40-44   1565.   1101.                41.3
+##  7    2006 45-49   1399.    947.                40.4
+##  8    2006 50-54   1116.    668                 37.5
+##  9    2006 55-59    871.    459.                34.5
+## 10    2006 60-64    491     230.                31.9
+## # i 218 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(df\_feminizacion, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Periodo, }\AttributeTok{y =}\NormalTok{ Indice\_feminizacion, }\AttributeTok{color =}\NormalTok{ Edad)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{size =} \FloatTok{1.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{title =} \StringTok{"Índice de feminización en ocupación por edad (2006–2024)"}\NormalTok{,}
+    \AttributeTok{x =} \StringTok{"Año"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"Porcentaje de mujeres (\%)"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"Grupo de edad"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-40-1.pdf}}
+las mujeres tienen mayor presencia en la ocupación en los grupos de edad
+entre 30 y 54 años, especialmente desde 2010. los jóvenes (16--24 años)
+y mayores (65+) presentan menor participación femenina y más
+fluctuaciones.
+
+\section{Resultados}\label{resultados}
+
+\section{Conclusión}\label{conclusiuxf3n}
+
+\section{-------------------------- JOE
+\ldots\ldots\ldots\ldots\ldots.}\label{joe-.}
+
+\subsection{GRAFICAS JOE}\label{graficas-joe}
+
+\section{---------------------------------}\label{section}
+
+\section{--------------------------JOSE-------------}\label{jose-}
+
+\#---------------------------------------------------
+
+\pandocbounded{\includegraphics[keepaspectratio]{ProyectoAED_files/figure-latex/unnamed-chunk-42-1.pdf}}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  Tasa_ocupacion by Sexo
+## t = 3.767, df = 7.4, p-value = 0.00633
+## alternative hypothesis: true difference in means between group Hombres and group Mujeres is not equal to 0
+## 95 percent confidence interval:
+##   3.368217 14.401655
+## sample estimates:
+## mean in group Hombres mean in group Mujeres 
+##              82.77577              73.89084
+\end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -682,10 +1906,6 @@ resulting from the work reported in this manuscript.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
-\supplementary{The following supporting information can be downloaded
-at:\\
-\linksupplementary{s1}, Figure S1: title; Table S1: title; Video S1:
-title.}
 
 % Only for the journal Methods and Protocols:
 % If you wish to submit a video article, please do so with any other supplementary material.
@@ -708,59 +1928,10 @@ title.}
 %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\authorcontributions{For research articles with several authors, a short
-paragraph specifying their individual contributions must be provided.
-The following statements should be used ``X.X. and Y.Y. conceive and
-designed the experiments; X.X. performed the experiments; X.X. and Y.Y.
-analyzed the data; W.W. contributed reagents/materials/analysis tools;
-Y.Y. wrote the paper.'\,' Authorship must be limited to those who have
-contributed substantially to the work reported.}
 
-\funding{Please add:
-\texttt{This\ research\ received\ no\ external\ funding\textquotesingle{}\textquotesingle{}\ or}This
-research was funded by NAME OF FUNDER grant number XXX.'\,' and and
-``The APC was funded by XXX'\,'. Check carefully that the details given
-are accurate and use the standard spelling of funding agency names at
-\url{https://search.crossref.org/funding}, any errors may affect your
-future funding.}
 
-\institutionalreview{In this section, you should add the Institutional
-Review Board Statement and approval number, if relevant to your study.
-You might choose to exclude this statement if the study did not require
-ethical approval. Please note that the Editorial Office might ask you
-for further information. Please add ``The study was conducted in
-accordance with the Declaration of Helsinki, and approved by the
-Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE
-(protocol code XXX and date of approval).'' for studies involving
-humans. OR ``The animal study protocol was approved by the Institutional
-Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code
-XXX and date of approval).'' for studies involving animals. OR ``Ethical
-review and approval were waived for this study due to REASON (please
-provide a detailed justification).'' OR ``Not applicable'' for studies
-not involving humans or animals.}
 
-\informedconsent{Any research article describing a study involving
-humans should contain this statement. Please add
-\texttt{Informed\ consent\ was\ obtained\ from\ all\ subjects\ \ involved\ in\ the\ study.\textquotesingle{}\textquotesingle{}\ OR}Patient
-consent was waived due to REASON (please provide a detailed
-justification).'\,' OR ``Not applicable'\,' for studies not involving
-humans. You might also choose to exclude this statement if the study did
-not involve humans.
 
-Written informed consent for publication must be obtained from
-participating patients who can be identified (including by the patients
-themselves). Please state ``Written informed consent has been obtained
-from the patient(s) to publish this paper'\,' if applicable.}
-
-\dataavailability{We encourage all authors of articles published in MDPI
-journals to share their research data. In this section, please provide
-details regarding where data supporting reported results can be found,
-including links to publicly archived datasets analyzed or generated
-during the study. Where no new data were created, or where data is
-unavailable due to privacy or ethical re-strictions, a statement is
-still required. Suggested Data Availability Statements are available in
-section ``MDPI Research Data Policies'' at
-\url{https://www.mdpi.com/ethics}.}
 
 % Only for journal Nursing Reports
 %\publicinvolvement{Please describe how the public (patients, consumers, carers) were involved in the research. Consider reporting against the GRIPP2 (Guidance for Reporting Involvement of Patients and the Public) checklist. If the public were not involved in any aspect of the research add: ``No public involvement in any aspect of this research''.}
@@ -771,22 +1942,7 @@ section ``MDPI Research Data Policies'' at
 % Only for journal Nursing Reports
 %\guidelinesstandards{Please add a statement indicating which reporting guideline was used when drafting the report. For example, ``This manuscript was drafted against the XXX (the full name of reporting guidelines and citation) for XXX (type of research) research''. A complete list of reporting guidelines can be accessed via the equator network: \url{https://www.equator-network.org/}.}
 
-\acknowledgments{All sources of funding of the study should be
-disclosed. Please clearly indicate grants that you have received in
-support of your research work. Clearly state if you received funds for
-covering the costs to publish in open access.}
 
-\conflictsofinterest{Declare conflicts of interest or state `The authors
-declare no conflict of interest.' Authors must identify and declare any
-personal circumstances or interest that may be perceived as
-inappropriately influencing the representation or interpretation of
-reported research results. Any role of the funding sponsors in the
-design of the study; in the collection, analyses or interpretation of
-data in the writing of the manuscript, or in the decision to publish the
-results must be declared in this section. If there is no role, please
-state `The founding sponsors had no role in the design of the study; in
-the collection, analyses, or interpretation of data; in the writing of
-the manuscript, an in the decision to publish the results'.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optional
@@ -794,21 +1950,9 @@ the manuscript, an in the decision to publish the results'.}
 %% Only for journal Encyclopedia
 %\entrylink{The Link to this entry published on the encyclopedia platform.}
 
-\abbreviations{Abbreviations}{
-The following abbreviations are used in this manuscript:\\
-
-\noindent
-\begin{tabular}{@{}ll}
-MDPI & Multidisciplinary Digital Publishing Institute \\
-DOAJ & Directory of open access journals \\
-TLA & Three letter acronym \\
-LD & linear dichroism \\
-\end{tabular}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Optional
-\input{"appendix.tex"}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
 

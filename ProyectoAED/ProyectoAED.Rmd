@@ -330,7 +330,7 @@ library(tidyr)
 library(ggplot2)
 
 # 1º crear una tabla con la variable brecha_paro 
-brecha <- datos %>% 
+brecha <- df_clean %>% 
   select(Periodo, Edad,Sexo,Tasa_paro) %>% 
   pivot_wider(names_from = Sexo, values_from = Tasa_paro) %>% 
   mutate(brecha_paro=Mujeres-Hombres)
@@ -362,7 +362,7 @@ Por último, el tercer gráfico (`evo_tasa_y_brecha`) combina ambas perspectivas
 En este bloque de código se elaboran una serie de gráficos exploratorios con el objetivo de analizar la evolución de la brecha de paro entre mujeres y hombres desagregada por grupos de edad. A partir del conjunto de datos principal, se construye una tabla denominada brecha_edades que contiene la tasa de paro por sexo y edad, y se calcula la variable brecha_paro como la diferencia entre las tasas de mujeres y hombres. Posteriormente, los grupos de edad se clasifican en intervalos de diez años, y los datos se dividen en distintos subconjuntos (df_1, df_2, df_3) para facilitar la representación y mejorar la legibilidad de los gráficos.
 
 ```{r}
-brecha_edades <- datos %>% 
+brecha_edades <- df_clean %>% 
   select(Sexo, Edad, Periodo,Tasa_paro) %>% 
   pivot_wider(names_from = Sexo, values_from = Tasa_paro) %>% 
   mutate(brecha_paro=Mujeres-Hombres)
@@ -371,9 +371,9 @@ brecha_edades
 unique(brecha_edades$Edad)
 library(ggplot2)
 #Para hacerlo con un unico dataframe, es muy complejo de graficar, asi que es mejor dividirlo en varios dataframes, para que así sea mas sencillo trabajar
-edades_1 <- c("De 16 a 19 años", "De 20 a 24 años", "De 25 a 29 años", "De 30 a 34 años")
-edades_2 <- c("De 35 a 39 años", "De 40 a 44 años", "De 45 a 49 años", "De 50 a 54 años")
-edades_3 <- c("De 55 a 59 años", "De 60 a 64 años", "De 65 a 69 años", "De 70 y más años")
+edades_1 <- c("16-19", "20-24", "25-29", "30-34")
+edades_2 <- c("35-39", "40-44", "45-49", "50-54")
+edades_3 <- c("55-59", "60-64", "65-69", "70+")
 
 df_1 <- brecha_edades %>% filter(Edad %in% edades_1)
 df_2 <- brecha_edades %>% filter(Edad %in% edades_2)
@@ -428,7 +428,7 @@ library(ggplot2)
 library(dplyr)
 
 rango_y <- range(brecha_edades$brecha_paro)
-años<- unique(datos$Periodo)
+años<- unique(df_clean$Periodo)
 
 
 grafico_brecha_paro_por_año<-lapply(años, function(año){
@@ -452,55 +452,55 @@ Los gráficos resultantes muestran, de forma clara y comparativa, cómo la inten
 En conjunto, este bloque  busca ofrecer una visión desagregada y evolutiva de la brecha de paro por edad. Gracias a la representación mediante diagramas de barras, se facilita la comparación entre grupos generacionales y se identifican con claridad los grupos que más contribuyen a mantener las disparidades laborales entre hombres y mujeres a lo largo del tiempo.
 
 
-En el siguiente bloque de código se genera una animación que muestra la evolución de la brecha de paro por grupo de edad a lo largo del tiempo, mediante transition_states() y ease_aes(), se define la animación temporal por años, que se renderiza y guarda como un archivo GIF utilizando las funciones animate() y anim_save().
-```{r}
-library(ggplot2)
-library(gganimate)
-library(dplyr)
-library(gifski)
+<!-- En el siguiente bloque de código se genera una animación que muestra la evolución de la brecha de paro por grupo de edad a lo largo del tiempo, mediante transition_states() y ease_aes(), se define la animación temporal por años, que se renderiza y guarda como un archivo GIF utilizando las funciones animate() y anim_save(). -->
+<!-- ```{r} -->
+<!-- library(ggplot2) -->
+<!-- library(gganimate) -->
+<!-- library(dplyr) -->
+<!-- library(gifski) -->
 
-# Media por año
-medias_anio <- brecha_edades %>%
-  group_by(Periodo) %>%
-  summarise(media = mean(brecha_paro, na.rm = TRUE))
+<!-- # Media por año -->
+<!-- medias_anio <- brecha_edades %>% -->
+<!--   group_by(Periodo) %>% -->
+<!--   summarise(media = mean(brecha_paro, na.rm = TRUE)) -->
 
-# Gráfico
-grafico_animado <- ggplot(brecha_edades,
-                          aes(x = factor(Edad, levels = unique(Edad)),
-                              y = brecha_paro)) +
-  geom_col(aes(fill = "Brecha de paro")) +   
-  geom_hline(data = medias_anio,
-             aes(yintercept = media, color = "Media anual"),   
-             linetype = "dashed", linewidth = 1) +
-  scale_fill_manual(name="Relleno", values = c("Brecha de paro" = "steelblue")) +
-  scale_color_manual( name="Linea",values = c("Media anual" = "black")) +
-  labs(
-    title = "Brecha de paro por grupo de edad — Año: {closest_state}",
-    x = "Grupo de edad",
-    y = "Brecha"
-  ) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.title = element_text(face = "bold"),
-        legend.position = "top") +
-  transition_states(Periodo, transition_length = 2, state_length = 1) +
-  ease_aes("linear")
+<!-- # Gráfico -->
+<!-- grafico_animado <- ggplot(brecha_edades, -->
+<!--                           aes(x = factor(Edad, levels = unique(Edad)), -->
+<!--                               y = brecha_paro)) + -->
+<!--   geom_col(aes(fill = "Brecha de paro")) +    -->
+<!--   geom_hline(data = medias_anio, -->
+<!--              aes(yintercept = media, color = "Media anual"),    -->
+<!--              linetype = "dashed", linewidth = 1) + -->
+<!--   scale_fill_manual(name="Relleno", values = c("Brecha de paro" = "steelblue")) + -->
+<!--   scale_color_manual( name="Linea",values = c("Media anual" = "black")) + -->
+<!--   labs( -->
+<!--     title = "Brecha de paro por grupo de edad — Año: {closest_state}", -->
+<!--     x = "Grupo de edad", -->
+<!--     y = "Brecha" -->
+<!--   ) + -->
+<!--   theme_minimal() + -->
+<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1), -->
+<!--         legend.title = element_text(face = "bold"), -->
+<!--         legend.position = "top") + -->
+<!--   transition_states(Periodo, transition_length = 2, state_length = 1) + -->
+<!--   ease_aes("linear") -->
 
-# Animar
-animacion <- animate(
-  grafico_animado,
-  nframes = length(unique(brecha_edades$Periodo)) * 10,
-  fps = 10,
-  renderer = gifski_renderer(),
-  width = 800,
-  height = 600
-)
+<!-- # Animar -->
+<!-- animacion <- animate( -->
+<!--   grafico_animado, -->
+<!--   nframes = length(unique(brecha_edades$Periodo)) * 10, -->
+<!--   fps = 10, -->
+<!--   renderer = gifski_renderer(), -->
+<!--   width = 800, -->
+<!--   height = 600 -->
+<!-- ) -->
 
-anim_save("brecha_paro.gif", animation = animacion)
+<!-- anim_save("brecha_paro.gif", animation = animacion) -->
 
 
-browseURL("brecha_paro.gif")
-```
+<!-- browseURL("brecha_paro.gif") -->
+<!-- ``` -->
 
 
 
@@ -606,27 +606,27 @@ ggplot(brecha_relativa, aes(x = Periodo, y = Razon)) +
 
 
 por edad
-```{r}
-# Filtrar para excluir el grupo de edad "70 y más años"
-#brecha_edad_filtrada <- brecha_edad %>% filter(Edad != "70 y más años")
-
-# Graficar la razón Hombres/Mujeres por edad (sin el grupo de 70)
-#ggplot(brecha_edad_filtrada, aes(x = Periodo, y = Razon, color = Edad)) +
-  geom_line(linewidth = 1) +
-  geom_hline(yintercept = 1, linetype = "dashed", color = "gray") +
-  scale_y_continuous(breaks = seq(0.5, 2, by = 0.1)) +
-  scale_x_continuous(breaks = seq(2006, 2024, by = 2)) +
-  labs(
-    title = "Razón Hombres/Mujeres en la tasa de actividad por edad (sin 70+)",
-    x = "Año",
-    y = "Razón (Hombres / Mujeres)",
-    color = "Edad"
-  ) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-
-```
+<!-- # ```{r} -->
+<!-- # # Filtrar para excluir el grupo de edad "70 y más años" -->
+<!-- # brecha_edad_filtrada <- df_clean %>% filter(Edad != "70 y más años") -->
+<!-- #  -->
+<!-- # # Graficar la razón Hombres/Mujeres por edad (sin el grupo de 70) -->
+<!-- # ggplot(brecha_edad_filtrada, aes(x = Periodo, y = Razon, color = Edad)) + -->
+<!-- #   geom_line(linewidth = 1) + -->
+<!-- #   geom_hline(yintercept = 1, linetype = "dashed", color = "gray") + -->
+<!-- #   scale_y_continuous(breaks = seq(0.5, 2, by = 0.1)) + -->
+<!-- #   scale_x_continuous(breaks = seq(2006, 2024, by = 2)) + -->
+<!-- #   labs( -->
+<!-- #     title = "Razón Hombres/Mujeres en la tasa de actividad por edad (sin 70+)", -->
+<!-- #     x = "Año", -->
+<!-- #     y = "Razón (Hombres / Mujeres)", -->
+<!-- #     color = "Edad" -->
+<!-- #   ) + -->
+<!-- #   theme_minimal() + -->
+<!-- #   theme(axis.text.x = element_text(angle = 45, hjust = 1)) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ``` -->
 
 
 
@@ -663,7 +663,7 @@ En este bloque de código se genera un gráfico exploratorio con el propósito d
 El gráfico resultante muestra la distribución proporcional de la población según su situación laboral y grupo de edad, diferenciando entre hombres y mujeres mediante `facet_wrap(~Sexo)`. Se emplea `geom_col(position = "fill")` para que las barras representen proporciones y no valores absolutos, y se aplican ajustes estéticos para mejorar la legibilidad, como la rotación de etiquetas del eje X y el uso de `theme_minimal()`. Este gráfico sirvió como prueba inicial para evaluar la claridad y estructura de la visualización antes de desarrollar la función que posteriormente generó automáticamente el mismo tipo de gráfico para todos los años del periodo analizado.
 
 ```{r}
-datos_composicion_2024<- datos %>% 
+datos_composicion_2024<- df_clean %>% 
   filter(Periodo==2024) %>% 
   select(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) %>% 
   pivot_longer(cols = c(Inactivos,Ocupados,Parados),names_to = "Estado",values_to = "N_Personas")
@@ -687,7 +687,7 @@ El código utiliza `facet_wrap(~Sexo)` para mostrar en paneles separados la info
 
 ```{r}
 
-datos_composicion<- datos  %>% 
+datos_composicion<- df_clean  %>% 
   select(Periodo,Edad,Sexo,Activos,Ocupados,Parados,Inactivos) %>% 
   pivot_longer(cols = c(Inactivos,Ocupados,Parados),names_to = "Estado",values_to = "N_Personas")
 
@@ -714,28 +714,28 @@ graficos_composicion_por_año
 
 Del análisis de los gráficos se observa una estructura bastante estable del mercado laboral por edad y sexo a lo largo del tiempo, con ligeras variaciones asociadas a los ciclos económicos. En ambos sexos, el grupo central de edad (30-54 años) concentra la mayor proporción de personas ocupadas, mientras que los extremos —jóvenes y mayores— presentan una mayor presencia de inactivos. Las mujeres muestran sistemáticamente una menor proporción de ocupación y una mayor de inactividad en comparación con los hombres, aunque esta diferencia tiende a reducirse en los años más recientes. Asimismo, la proporción de personas paradas es más significativa en los grupos jóvenes, reflejando una mayor vulnerabilidad del empleo juvenil. En conjunto, los gráficos ponen de manifiesto que, pese a los avances en participación femenina y la estabilidad general del empleo en edades medias, persisten desigualdades de género e importantes diferencias intergeneracionales dentro del mercado laboral.
 
-En este bloque de código se genera una animación en formato GIF que muestra la evolución de la composición del mercado laboral por grupo de edad y sexo a lo largo del tiempo. Siguiendo el mismo procedimiento utilizado en el ejercicio anterior, se crea primero el gráfico base con ggplot2 y posteriormente se aplica la función `animate()` del paquete gganimate, especificando el número de fotogramas y la velocidad de transición. Finalmente, la animación se guarda mediante `anim_save()` como un archivo GIF titulado “composicion_mercado.gif”.
-```{r}
-library(ggplot2)
-library(gifski)
-graph1 <- ggplot(datos_composicion, 
-                 aes(x = factor(Edad, levels = unique(Edad)),
-                     y = N_Personas, fill = Estado)) +
-  geom_col(position = "fill") +
-  facet_wrap(~Sexo) +
-  labs(
-    title = "Composición del mercado laboral por grupo de edad - Año: {frame_time}",
-    x = "Grupo de edad",
-    y = "Proporción",
-    fill = "Estado"
-  ) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  transition_time(Periodo) +
-  ease_aes('linear')
-animacion <- animate(graph1, nframes = 100, fps = 10, renderer = gifski_renderer())
-anim_save("composicion_mercado.gif", animation = animacion)
-```
+<!-- En este bloque de código se genera una animación en formato GIF que muestra la evolución de la composición del mercado laboral por grupo de edad y sexo a lo largo del tiempo. Siguiendo el mismo procedimiento utilizado en el ejercicio anterior, se crea primero el gráfico base con ggplot2 y posteriormente se aplica la función `animate()` del paquete gganimate, especificando el número de fotogramas y la velocidad de transición. Finalmente, la animación se guarda mediante `anim_save()` como un archivo GIF titulado “composicion_mercado.gif”. -->
+<!-- ```{r} -->
+<!-- library(ggplot2) -->
+<!-- library(gifski) -->
+<!-- graph1 <- ggplot(datos_composicion,  -->
+<!--                  aes(x = factor(Edad, levels = unique(Edad)), -->
+<!--                      y = N_Personas, fill = Estado)) + -->
+<!--   geom_col(position = "fill") + -->
+<!--   facet_wrap(~Sexo) + -->
+<!--   labs( -->
+<!--     title = "Composición del mercado laboral por grupo de edad - Año: {frame_time}", -->
+<!--     x = "Grupo de edad", -->
+<!--     y = "Proporción", -->
+<!--     fill = "Estado" -->
+<!--   ) + -->
+<!--   theme_minimal() + -->
+<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + -->
+<!--   transition_time(Periodo) + -->
+<!--   ease_aes('linear') -->
+<!-- animacion <- animate(graph1, nframes = 100, fps = 10, renderer = gifski_renderer()) -->
+<!-- anim_save("composicion_mercado.gif", animation = animacion) -->
+<!-- ``` -->
 ##Proporción de parados
 En este bloque de código se genera una serie de gráficos que representan la distribución del paro dentro de cada sexo por grupo de edad y año. Para ello, se utiliza una estructura, que permite crear automáticamente un gráfico por cada año disponible en el conjunto de datos. Primero, los datos se filtran por periodo y se agrupan por sexo y año, tras lo cual se calcula la proporción que representa cada grupo de edad dentro del total de personas paradas del mismo sexo (`Parados / sum(Parados)`).
 
@@ -744,7 +744,7 @@ A continuación, se construyen los gráficos con ggplot2, empleando `geom_col(po
 
 ```{r}
 graficos_parados_proporcion_por_año<- lapply(años, function(año){
-datos %>%
+df_clean %>%
   filter(Periodo==año) %>% 
   group_by(Sexo, Periodo) %>%
   mutate(Proporcion_parados_en_sexo = Parados / sum(Parados)) %>%
@@ -769,60 +769,60 @@ En cuanto al análisis por género, se observa que la distribución del paro den
 
 En conjunto, estas gráficas ponen de manifiesto un proceso de envejecimiento del desempleo y una convergencia progresiva entre hombres y mujeres en la estructura interna del paro, aunque todavía persisten diferencias derivadas de los roles laborales y sociales tradicionales. Mientras los hombres mayores ganan peso dentro del paro total por el retraso en la jubilación, las mujeres siguen mostrando una mayor vulnerabilidad en las edades centrales, reflejando las desigualdades de género que aún caracterizan el mercado laboral español.
 
-En este bloque de código se genera la animación que muestra la evolución de la distribución del paro por sexo y grupo de edad a lo largo de los años. Para ello, primero se calcula la proporción de personas paradas dentro de cada sexo y grupo de edad en cada año, lo que permite comparar la estructura interna del desempleo entre hombres y mujeres. Posteriormente, se aplica una transformación adicional sobre la variable Edad utilizando expresiones regulares. En concreto, se extraen los valores numéricos iniciales de cada etiqueta de edad (por ejemplo, “16”, “20”, “25”, etc.) y se ordenan de forma ascendente. De este modo, se eliminan los caracteres no numéricos y se corrige el problema del grupo “70 y más años”, que antes aparecía desordenado en el eje. Finalmente, con los datos ordenados, se utiliza el paquete gganimate para representar año a año cómo varía la composición del desempleo entre hombres y mujeres, generando un GIF dinámico que facilita la interpretación temporal del fenómeno.
+<!-- En este bloque de código se genera la animación que muestra la evolución de la distribución del paro por sexo y grupo de edad a lo largo de los años. Para ello, primero se calcula la proporción de personas paradas dentro de cada sexo y grupo de edad en cada año, lo que permite comparar la estructura interna del desempleo entre hombres y mujeres. Posteriormente, se aplica una transformación adicional sobre la variable Edad utilizando expresiones regulares. En concreto, se extraen los valores numéricos iniciales de cada etiqueta de edad (por ejemplo, “16”, “20”, “25”, etc.) y se ordenan de forma ascendente. De este modo, se eliminan los caracteres no numéricos y se corrige el problema del grupo “70 y más años”, que antes aparecía desordenado en el eje. Finalmente, con los datos ordenados, se utiliza el paquete gganimate para representar año a año cómo varía la composición del desempleo entre hombres y mujeres, generando un GIF dinámico que facilita la interpretación temporal del fenómeno. -->
 
-```{r}
-library(ggplot2)
-library(gganimate)
-library(dplyr)
-library(gifski)
-library(stringr)
+<!-- ```{r} -->
+<!-- library(ggplot2) -->
+<!-- library(gganimate) -->
+<!-- library(dplyr) -->
+<!-- library(gifski) -->
+<!-- library(stringr) -->
 
-datos_anim <- datos %>%
-  group_by(Sexo, Periodo, Edad) %>%
-  summarise(Parados = sum(Parados, na.rm = TRUE)) %>%
-  group_by(Sexo, Periodo) %>%
-  mutate(Proporcion_parados_en_sexo = Parados / sum(Parados)) %>%
-  ungroup()
+<!-- datos_anim <- datos %>% -->
+<!--   group_by(Sexo, Periodo, Edad) %>% -->
+<!--   summarise(Parados = sum(Parados, na.rm = TRUE)) %>% -->
+<!--   group_by(Sexo, Periodo) %>% -->
+<!--   mutate(Proporcion_parados_en_sexo = Parados / sum(Parados)) %>% -->
+<!--   ungroup() -->
 
-edades_orden <- datos_anim %>%
-  distinct(Edad) %>%
-  mutate(inicio = as.integer(str_extract(Edad, "\\d+"))) %>%  
-  arrange(inicio) %>%
-  pull(Edad)
+<!-- edades_orden <- datos_anim %>% -->
+<!--   distinct(Edad) %>% -->
+<!--   mutate(inicio = as.integer(str_extract(Edad, "\\d+"))) %>%   -->
+<!--   arrange(inicio) %>% -->
+<!--   pull(Edad) -->
 
-datos_anim <- datos_anim %>%
-  mutate(Edad = factor(Edad, levels = edades_orden))
+<!-- datos_anim <- datos_anim %>% -->
+<!--   mutate(Edad = factor(Edad, levels = edades_orden)) -->
 
-grafico_animado <- ggplot(datos_anim, 
-                          aes(x = Edad, 
-                              y = Proporcion_parados_en_sexo, 
-                              fill = Sexo)) +
-  geom_col(position = "dodge") +
-  labs(
-    title = "Distribución del paro dentro de cada sexo - Año: {frame_time}",
-    x = "Grupo de edad",
-    y = "Proporción del total de parados del mismo sexo",
-    fill = "Sexo"
-  ) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  transition_time(Periodo) +
-  ease_aes("linear")
+<!-- grafico_animado <- ggplot(datos_anim,  -->
+<!--                           aes(x = Edad,  -->
+<!--                               y = Proporcion_parados_en_sexo,  -->
+<!--                               fill = Sexo)) + -->
+<!--   geom_col(position = "dodge") + -->
+<!--   labs( -->
+<!--     title = "Distribución del paro dentro de cada sexo - Año: {frame_time}", -->
+<!--     x = "Grupo de edad", -->
+<!--     y = "Proporción del total de parados del mismo sexo", -->
+<!--     fill = "Sexo" -->
+<!--   ) + -->
+<!--   theme_minimal() + -->
+<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + -->
+<!--   transition_time(Periodo) + -->
+<!--   ease_aes("linear") -->
 
-animacion <- animate(
-  grafico_animado,
-  nframes = length(unique(datos_anim$Periodo)) * 10,  
-  fps = 10,
-  width = 800,
-  height = 600,
-  renderer = gifski_renderer()
-)
-anim_save("distribucion_paro_sexo.gif", animation = animacion)
+<!-- animacion <- animate( -->
+<!--   grafico_animado, -->
+<!--   nframes = length(unique(datos_anim$Periodo)) * 10,   -->
+<!--   fps = 10, -->
+<!--   width = 800, -->
+<!--   height = 600, -->
+<!--   renderer = gifski_renderer() -->
+<!-- ) -->
+<!-- anim_save("distribucion_paro_sexo.gif", animation = animacion) -->
 
-browseURL("distribucion_paro_sexo.gif")
+<!-- browseURL("distribucion_paro_sexo.gif") -->
 
-```
+<!-- ``` -->
 
 
 
@@ -848,41 +848,41 @@ ggplot(df_ocup_inact, aes(x = Sexo, y = Personas, fill = Situacion)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Distribución de ocupados e inactivos por sexo", x = "Sexo", y = "Personas")
 ```
-#gif ocupados-inactivos
-```{r}
-library(ggplot2)
-library(gganimate)
-library(gifski)
-library(dplyr)
-library(tidyr)
+<!-- #gif ocupados-inactivos -->
+<!-- ```{r} -->
+<!-- library(ggplot2) -->
+<!-- library(gganimate) -->
+<!-- library(gifski) -->
+<!-- library(dplyr) -->
+<!-- library(tidyr) -->
 
-# datos por año
-df_ocup_inact <- df_clean %>%
-  group_by(Periodo, Sexo) %>%
-  summarise(
-    Ocupados = sum(Ocupados, na.rm = TRUE),
-    Inactivos = sum(Inactivos, na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  pivot_longer(cols = c(Ocupados, Inactivos), names_to = "Situacion", values_to = "Personas")
+<!-- # datos por año -->
+<!-- df_ocup_inact <- df_clean %>% -->
+<!--   group_by(Periodo, Sexo) %>% -->
+<!--   summarise( -->
+<!--     Ocupados = sum(Ocupados, na.rm = TRUE), -->
+<!--     Inactivos = sum(Inactivos, na.rm = TRUE), -->
+<!--     .groups = "drop" -->
+<!--   ) %>% -->
+<!--   pivot_longer(cols = c(Ocupados, Inactivos), names_to = "Situacion", values_to = "Personas") -->
 
-# gráfico animado
-graph1 <- ggplot(df_ocup_inact, aes(x = Sexo, y = Personas, fill = Situacion)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(
-    title = "Distribución de ocupados e inactivos por sexo – Año: {frame_time}",
-    x = "Sexo",
-    y = "Personas",
-    fill = "Situación"
-  ) +
-  theme_minimal() +
-  transition_time(Periodo) +
-  ease_aes('linear')
+<!-- # gráfico animado -->
+<!-- graph1 <- ggplot(df_ocup_inact, aes(x = Sexo, y = Personas, fill = Situacion)) + -->
+<!--   geom_bar(stat = "identity", position = "dodge") + -->
+<!--   labs( -->
+<!--     title = "Distribución de ocupados e inactivos por sexo – Año: {frame_time}", -->
+<!--     x = "Sexo", -->
+<!--     y = "Personas", -->
+<!--     fill = "Situación" -->
+<!--   ) + -->
+<!--   theme_minimal() + -->
+<!--   transition_time(Periodo) + -->
+<!--   ease_aes('linear') -->
 
-#  GIF 
-anim_save("ocupados_inactivos_sexo.gif", animation = graph1, renderer = gifski_renderer())
+<!-- #  GIF  -->
+<!-- anim_save("ocupados_inactivos_sexo.gif", animation = graph1, renderer = gifski_renderer()) -->
 
-```
+<!-- ``` -->
 
 
 
@@ -912,47 +912,47 @@ ggplot(df_act_inact, aes(x = Sexo, y = Personas, fill = Situacion)) +
 ``` 
 
 
-```{r}
-library(ggplot2)
-library(gganimate)
-library(gifski)
-library(dplyr)
-library(tidyr)
+<!-- ```{r} -->
+<!-- library(ggplot2) -->
+<!-- library(gganimate) -->
+<!-- library(gifski) -->
+<!-- library(dplyr) -->
+<!-- library(tidyr) -->
 
-# 1️⃣ Preparar los datos por año
-df_act_inact <- df_clean %>%
-  group_by(Periodo, Sexo) %>%
-  summarise(
-    Activos = sum(Activos, na.rm = TRUE),
-    Inactivos = sum(Inactivos, na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  pivot_longer(cols = c(Activos, Inactivos), names_to = "Situacion", values_to = "Personas")
+<!-- # 1️⃣ Preparar los datos por año -->
+<!-- df_act_inact <- df_clean %>% -->
+<!--   group_by(Periodo, Sexo) %>% -->
+<!--   summarise( -->
+<!--     Activos = sum(Activos, na.rm = TRUE), -->
+<!--     Inactivos = sum(Inactivos, na.rm = TRUE), -->
+<!--     .groups = "drop" -->
+<!--   ) %>% -->
+<!--   pivot_longer(cols = c(Activos, Inactivos), names_to = "Situacion", values_to = "Personas") -->
 
-# 2️⃣ Crear el gráfico animado
-graph1 <- ggplot(df_act_inact, 
-                 aes(x = Sexo, y = Personas, fill = Situacion)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(
-    title = "Distribución de activos e inactivos por sexo – Año: {frame_time}",
-    x = "Sexo",
-    y = "Personas",
-    fill = "Situación"
-  ) +
-  theme_minimal() +
-  transition_time(Periodo) +
-  ease_aes('linear')
+<!-- # 2️⃣ Crear el gráfico animado -->
+<!-- graph1 <- ggplot(df_act_inact,  -->
+<!--                  aes(x = Sexo, y = Personas, fill = Situacion)) + -->
+<!--   geom_bar(stat = "identity", position = "dodge") + -->
+<!--   labs( -->
+<!--     title = "Distribución de activos e inactivos por sexo – Año: {frame_time}", -->
+<!--     x = "Sexo", -->
+<!--     y = "Personas", -->
+<!--     fill = "Situación" -->
+<!--   ) + -->
+<!--   theme_minimal() + -->
+<!--   transition_time(Periodo) + -->
+<!--   ease_aes('linear') -->
 
-# 3️⃣ Crear la animación desde el gráfico
-animacion <- animate(graph1, nframes = 100, fps = 10, renderer = gifski_renderer())
+<!-- # 3️⃣ Crear la animación desde el gráfico -->
+<!-- animacion <- animate(graph1, nframes = 100, fps = 10, renderer = gifski_renderer()) -->
 
-# 4️⃣ Guardar el GIF
-anim_save("activos_inactivos_sexo.gif", animation = animacion, renderer = gifski_renderer())
-
-
+<!-- # 4️⃣ Guardar el GIF -->
+<!-- anim_save("activos_inactivos_sexo.gif", animation = animacion, renderer = gifski_renderer()) -->
 
 
-```
+
+
+<!-- ``` -->
 
 
 
